@@ -73,7 +73,7 @@ export function Footer() {
             viewport={{ once: true }}
             transition={{ 
               duration: 0.8,
-              type: "spring",
+              type: "spring" as const,
               stiffness: 100
             }}
             className="space-y-6"
@@ -126,7 +126,7 @@ export function Footer() {
             transition={{ 
               duration: 0.8, 
               delay: 0.1,
-              type: "spring",
+              type: "spring" as const,
               stiffness: 100
             }}
             style={{ transformStyle: "preserve-3d" }}
@@ -166,7 +166,7 @@ export function Footer() {
             transition={{ 
               duration: 0.8, 
               delay: 0.2,
-              type: "spring",
+              type: "spring" as const,
               stiffness: 100
             }}
             style={{ transformStyle: "preserve-3d" }}
@@ -206,7 +206,7 @@ export function Footer() {
             transition={{ 
               duration: 0.8, 
               delay: 0.3,
-              type: "spring",
+              type: "spring" as const,
               stiffness: 100
             }}
             style={{ transformStyle: "preserve-3d" }}

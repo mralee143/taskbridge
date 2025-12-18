@@ -81,7 +81,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       transition={{ 
         duration: 1.2, 
         delay: index * 0.15,
-        type: "spring",
+        type: "spring" as const,
         stiffness: 80,
         damping: 15
       }}
@@ -92,7 +92,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         rotateZ: isFromRight ? 2 : -2,
         transition: { 
           duration: 0.4,
-          type: "spring",
+          type: "spring" as const,
           stiffness: 300
         }
       }}
@@ -197,7 +197,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           }}
           transition={{ 
             duration: 0.8,
-            type: "spring",
+            type: "spring" as const,
             stiffness: 200
           }}
           className={`relative w-24 h-24 rounded-3xl bg-gradient-to-br ${service.color} p-5 mb-8 shadow-2xl shadow-fuchsia-500/30 group-hover:shadow-fuchsia-500/60 group-hover:shadow-2xl`}

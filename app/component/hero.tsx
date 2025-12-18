@@ -21,7 +21,7 @@ export function Hero() {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 200
       }
@@ -203,7 +203,7 @@ export function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ 
                   delay: 1.4 + index * 0.1,
-                  type: "spring",
+                  type: "spring" as const,
                   stiffness: 200
                 }}
                 whileHover={{ 
