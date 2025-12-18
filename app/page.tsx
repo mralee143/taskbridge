@@ -12,22 +12,9 @@ import { Footer } from "./component/footer";
 
 export default function Home() {
   const [showWelcome, setShowWelcome] = useState(true);
-  const [hasVisited, setHasVisited] = useState(false);
-
-  useEffect(() => {
-    // Check if user has visited before (optional - remove if you want to show welcome every time)
-    const visited = localStorage.getItem('taskbridge-visited');
-    if (visited) {
-      setShowWelcome(false);
-      setHasVisited(true);
-    }
-  }, []);
 
   const handleWelcomeComplete = () => {
     setShowWelcome(false);
-    // Mark as visited (optional - remove if you want to show welcome every time)
-    localStorage.setItem('taskbridge-visited', 'true');
-    setHasVisited(true);
   };
 
   return (
