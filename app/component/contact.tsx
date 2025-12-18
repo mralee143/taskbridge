@@ -15,26 +15,26 @@ export function Contact() {
       title: "Email Us",
       detail: "hello@taskbridge.com",
       link: "mailto:hello@taskbridge.com",
-      color: "from-fuchsia-500 to-pink-500",
+      color: "from-slate-500 to-slate-600",
     },
     {
       icon: Phone,
       title: "Call Us",
       detail: "+1 (555) 123-4567",
       link: "tel:+15551234567",
-      color: "from-purple-500 to-fuchsia-500",
+      color: "from-slate-600 to-slate-700",
     },
     {
       icon: MapPin,
       title: "Visit Us",
       detail: "123 Business Ave, Tech City",
       link: "#",
-      color: "from-pink-500 to-rose-500",
+      color: "from-slate-400 to-slate-500",
     },
   ];
 
   return (
-    <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 overflow-hidden">
+    <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800/20 to-slate-900 overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -48,7 +48,7 @@ export function Contact() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-fuchsia-500/10 rounded-full blur-3xl"
+          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-slate-500/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -61,7 +61,7 @@ export function Contact() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-slate-600/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -75,7 +75,7 @@ export function Contact() {
           className="text-center mb-16"
         >
           <motion.span 
-            className="inline-flex items-center gap-2 px-6 py-3 mb-6 text-sm bg-fuchsia-500/20 text-fuchsia-300 rounded-full border border-fuchsia-500/30 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 mb-6 text-sm bg-slate-500/20 text-slate-300 rounded-full border border-slate-500/30 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
           >
             <MessageCircle size={16} />
@@ -90,7 +90,7 @@ export function Contact() {
           >
             Let's Build Something{" "}
             <motion.span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-pink-400 to-purple-400"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-slate-300 to-slate-500"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
@@ -139,12 +139,12 @@ export function Contact() {
             >
               {/* Form glow effect */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 to-pink-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 bg-gradient-to-r from-slate-500/5 to-slate-400/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 animate={{
                   background: [
-                    "radial-gradient(circle at 20% 20%, rgba(217, 70, 239, 0.05), transparent)",
-                    "radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.05), transparent)",
-                    "radial-gradient(circle at 20% 20%, rgba(217, 70, 239, 0.05), transparent)",
+                    "radial-gradient(circle at 20% 20%, rgba(123, 104, 238, 0.05), transparent)",
+                    "radial-gradient(circle at 80% 80%, rgba(204, 204, 255, 0.05), transparent)",
+                    "radial-gradient(circle at 20% 20%, rgba(123, 104, 238, 0.05), transparent)",
                   ]
                 }}
                 transition={{ duration: 4, repeat: Infinity }}
@@ -246,10 +246,10 @@ export function Contact() {
                   whileHover={{ 
                     scale: 1.05,
                     rotateX: 5,
-                    boxShadow: "0 15px 40px rgba(217, 70, 239, 0.4)"
+                    boxShadow: "0 15px 40px rgba(123, 104, 238, 0.4)"
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 text-white px-8 py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-fuchsia-500/50 font-semibold text-lg relative overflow-hidden group"
+                  className="w-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white px-8 py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-slate-500/50 font-semibold text-lg relative overflow-hidden group"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <motion.div
@@ -321,7 +321,7 @@ export function Contact() {
                       <div className="text-sm text-gray-400 mb-1 font-medium">
                         {item.title}
                       </div>
-                      <div className="text-lg text-white group-hover:text-fuchsia-400 transition-colors duration-300 font-semibold">
+                      <div className="text-lg text-white group-hover:text-slate-400 transition-colors duration-300 font-semibold">
                         {item.detail}
                       </div>
                     </div>
@@ -338,7 +338,7 @@ export function Contact() {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-              className="bg-gradient-to-br from-fuchsia-600 to-pink-600 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
+              className="bg-gradient-to-br from-slate-600 to-slate-700 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Animated background pattern */}
@@ -358,7 +358,7 @@ export function Contact() {
                 <h3 className="text-2xl font-bold mb-4 font-[var(--font-space-grotesk)]">
                   Ready to Get Started?
                 </h3>
-                <p className="mb-8 text-fuchsia-50 text-lg leading-relaxed">
+                <p className="mb-8 text-slate-50 text-lg leading-relaxed">
                   Join hundreds of satisfied clients who have transformed their businesses with our services.
                 </p>
                 
@@ -377,7 +377,7 @@ export function Contact() {
                       className="text-center"
                     >
                       <div className="text-3xl font-bold mb-2">{stat.value}</div>
-                      <div className="text-sm text-fuchsia-100 font-medium">{stat.label}</div>
+                      <div className="text-sm text-slate-100 font-medium">{stat.label}</div>
                     </motion.div>
                   ))}
                 </div>

@@ -11,40 +11,40 @@ const services = [
     title: "Graphics Designing",
     description: "Create stunning visual identities, logos, and brand materials that captivate your audience and stand out in the market.",
     features: ["Logo Design", "Brand Identity", "Marketing Materials", "Social Media Graphics"],
-    color: "from-fuchsia-500 to-pink-500",
-    gradient: "from-fuchsia-500/20 to-pink-500/20",
+    color: "from-slate-500 to-slate-600",
+    gradient: "from-slate-500/20 to-slate-600/20",
   },
   {
     icon: Search,
     title: "SEO Services",
     description: "Boost your online visibility with strategic SEO optimization that drives organic traffic and improves search rankings.",
     features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Analytics & Reporting"],
-    color: "from-purple-500 to-fuchsia-500",
-    gradient: "from-purple-500/20 to-fuchsia-500/20",
+    color: "from-slate-600 to-slate-700",
+    gradient: "from-slate-600/20 to-slate-700/20",
   },
   {
     icon: TrendingUp,
     title: "Digital Marketing",
     description: "Comprehensive marketing strategies that connect with your target audience and deliver measurable ROI across all channels.",
     features: ["Social Media Marketing", "Email Campaigns", "Content Strategy", "PPC Advertising"],
-    color: "from-pink-500 to-rose-500",
-    gradient: "from-pink-500/20 to-rose-500/20",
+    color: "from-slate-400 to-slate-500",
+    gradient: "from-slate-400/20 to-slate-500/20",
   },
   {
     icon: Code,
     title: "Web Development",
     description: "Build powerful, responsive websites and web applications with cutting-edge technologies and best practices.",
     features: ["Custom Websites", "E-commerce Solutions", "Web Applications", "Maintenance & Support"],
-    color: "from-violet-500 to-purple-500",
-    gradient: "from-violet-500/20 to-purple-500/20",
+    color: "from-slate-700 to-slate-800",
+    gradient: "from-slate-700/20 to-slate-800/20",
   },
   {
     icon: Bot,
     title: "AI Chatbot",
     description: "Implement intelligent chatbot solutions that provide 24/7 customer support and enhance user engagement.",
     features: ["Custom AI Training", "Multi-Platform Integration", "Natural Language Processing", "Analytics Dashboard"],
-    color: "from-indigo-500 to-fuchsia-500",
-    gradient: "from-indigo-500/20 to-fuchsia-500/20",
+    color: "from-slate-800 to-slate-900",
+    gradient: "from-slate-800/20 to-slate-900/20",
   },
 ];
 
@@ -94,7 +94,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         }
       }}
       whileTap={{ scale: 0.95 }}
-      className="group relative bg-gradient-to-br from-slate-800/90 via-slate-800/70 to-slate-900/90 backdrop-blur-md rounded-3xl p-8 border border-slate-600/30 hover:border-fuchsia-400/60 transition-all duration-700 overflow-hidden shadow-2xl hover:shadow-fuchsia-500/20"
+      className="group relative bg-gradient-to-br from-slate-800/90 via-slate-800/70 to-slate-900/90 backdrop-blur-md rounded-3xl p-8 border border-slate-600/30 hover:border-slate-400/60 transition-all duration-700 overflow-hidden shadow-2xl hover:shadow-slate-500/20"
       style={{ 
         perspective: "1000px",
         transformStyle: "preserve-3d"
@@ -143,7 +143,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         ].map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute bg-fuchsia-400/30 rounded-full blur-sm"
+            className="absolute bg-slate-400/30 rounded-full blur-sm"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -196,7 +196,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             duration: 0.8,
             ease: "easeOut"
           }}
-          className={`relative w-24 h-24 rounded-3xl bg-gradient-to-br ${service.color} p-5 mb-8 shadow-2xl shadow-fuchsia-500/30 group-hover:shadow-fuchsia-500/60 group-hover:shadow-2xl`}
+          className={`relative w-24 h-24 rounded-3xl bg-gradient-to-br ${service.color} p-5 mb-8 shadow-2xl shadow-slate-500/30 group-hover:shadow-slate-500/60 group-hover:shadow-2xl`}
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Icon glow effect */}
@@ -227,7 +227,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
         {/* Title with gradient effect */}
         <motion.h3 
-          className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-fuchsia-400 group-hover:to-pink-400 transition-all duration-300"
+          className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-400 group-hover:to-slate-300 transition-all duration-300"
           whileHover={{ scale: 1.05 }}
         >
           {service.title}
@@ -249,7 +249,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
               className="flex items-center gap-3 text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300"
             >
               <motion.div 
-                className="w-2 h-2 rounded-full bg-gradient-to-r from-fuchsia-400 to-pink-400"
+                className="w-2 h-2 rounded-full bg-gradient-to-r from-slate-400 to-slate-300"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
               />
@@ -264,18 +264,18 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             scale: 1.08,
             rotateX: 5,
             z: 20,
-            boxShadow: "0 15px 40px rgba(217, 70, 239, 0.4)"
+            boxShadow: "0 15px 40px rgba(123, 104, 238, 0.4)"
           }}
           whileTap={{ 
             scale: 0.95,
             rotateX: -2
           }}
-          className="w-full py-4 rounded-2xl border-2 border-fuchsia-500/50 text-fuchsia-400 hover:text-white hover:border-fuchsia-400 transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm"
+          className="w-full py-4 rounded-2xl border-2 border-slate-500/50 text-slate-400 hover:text-white hover:border-slate-400 transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Animated background layers */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/0 via-fuchsia-500/20 to-pink-500/0"
+            className="absolute inset-0 bg-gradient-to-r from-slate-500/0 via-slate-500/20 to-slate-400/0"
             animate={{
               x: ["-100%", "100%"],
             }}
@@ -287,11 +287,11 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           />
           
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/10 to-pink-500/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"
+            className="absolute inset-0 bg-gradient-to-r from-slate-500/10 to-slate-400/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"
             animate={{
               background: [
-                "linear-gradient(45deg, rgba(217, 70, 239, 0.1), rgba(236, 72, 153, 0.1))",
-                "linear-gradient(225deg, rgba(236, 72, 153, 0.1), rgba(217, 70, 239, 0.1))",
+                "linear-gradient(45deg, rgba(123, 104, 238, 0.1), rgba(204, 204, 255, 0.1))",
+                "linear-gradient(225deg, rgba(204, 204, 255, 0.1), rgba(123, 104, 238, 0.1))",
               ]
             }}
             transition={{
@@ -323,7 +323,7 @@ export function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900">
+    <section id="services" className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800/20 to-slate-900">
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -336,7 +336,7 @@ export function Services() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-fuchsia-500/5 rounded-full blur-3xl"
+          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-slate-500/5 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -348,7 +348,7 @@ export function Services() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-purple-500/5 rounded-full blur-3xl"
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-slate-600/5 rounded-full blur-3xl"
         />
       </div>
 
@@ -362,7 +362,7 @@ export function Services() {
           className="text-center mb-16"
         >
           <motion.span 
-            className="inline-block px-6 py-3 mb-6 text-sm bg-fuchsia-500/20 text-fuchsia-300 rounded-full border border-fuchsia-500/30 backdrop-blur-sm"
+            className="inline-block px-6 py-3 mb-6 text-sm bg-slate-500/20 text-slate-300 rounded-full border border-slate-500/30 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
           >
             ✨ What We Offer
@@ -375,7 +375,7 @@ export function Services() {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-pink-400 to-purple-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-slate-300 to-slate-500">
               Services
             </span>
           </motion.h2>

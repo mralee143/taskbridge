@@ -47,7 +47,7 @@ export function Footer() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-fuchsia-500/10 rounded-full blur-3xl"
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-slate-500/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -60,7 +60,7 @@ export function Footer() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl"
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-slate-600/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -79,7 +79,7 @@ export function Footer() {
             style={{ transformStyle: "preserve-3d" }}
           >
             <motion.h3 
-              className="text-3xl font-bold bg-gradient-to-r from-fuchsia-400 to-pink-400 bg-clip-text text-transparent font-[var(--font-space-grotesk)]"
+              className="text-3xl font-bold bg-gradient-to-r from-slate-400 to-slate-300 bg-clip-text text-transparent font-[var(--font-space-grotesk)]"
               whileHover={{ scale: 1.05 }}
             >
               TASKBRIDGE
@@ -103,10 +103,10 @@ export function Footer() {
                     scale: 1.2, 
                     y: -5,
                     rotateZ: 5,
-                    boxShadow: "0 10px 25px rgba(217, 70, 239, 0.3)"
+                    boxShadow: "0 10px 25px rgba(123, 104, 238, 0.3)"
                   }}
                   whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 hover:from-fuchsia-600 hover:to-pink-600 flex items-center justify-center transition-all duration-300 border border-slate-700 hover:border-fuchsia-500/50 group"
+                  className="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 hover:from-slate-600 hover:to-slate-700 flex items-center justify-center transition-all duration-300 border border-slate-700 hover:border-slate-500/50 group"
                   aria-label={social.name}
                 >
                   <span className="text-gray-400 group-hover:text-white font-bold text-sm">
@@ -144,11 +144,11 @@ export function Footer() {
                 >
                   <a
                     href="#services"
-                    className="text-gray-400 hover:text-fuchsia-400 transition-all duration-300 inline-block relative group"
+                    className="text-gray-400 hover:text-slate-400 transition-all duration-300 inline-block relative group"
                   >
                     <span className="relative z-10">{service}</span>
                     <motion.div
-                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-pink-400 group-hover:w-full transition-all duration-300"
+                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-400 to-slate-300 group-hover:w-full transition-all duration-300"
                     />
                   </a>
                 </motion.li>
@@ -183,11 +183,11 @@ export function Footer() {
                 >
                   <a
                     href={link.href}
-                    className="text-gray-400 hover:text-fuchsia-400 transition-all duration-300 inline-block relative group"
+                    className="text-gray-400 hover:text-slate-400 transition-all duration-300 inline-block relative group"
                   >
                     <span className="relative z-10">{link.name}</span>
                     <motion.div
-                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-pink-400 group-hover:w-full transition-all duration-300"
+                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-400 to-slate-300 group-hover:w-full transition-all duration-300"
                     />
                   </a>
                 </motion.li>
@@ -228,14 +228,14 @@ export function Footer() {
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.2 }}
                     transition={{ duration: 0.5 }}
-                    className="w-6 h-6 text-fuchsia-400 flex-shrink-0 mt-1"
+                    className="w-6 h-6 text-slate-400 flex-shrink-0 mt-1"
                   >
                     <item.icon className="w-full h-full" />
                   </motion.div>
                   {item.href !== "#" ? (
                     <a
                       href={item.href}
-                      className="text-gray-400 hover:text-fuchsia-400 transition-colors duration-300"
+                      className="text-gray-400 hover:text-slate-400 transition-colors duration-300"
                     >
                       {item.text}
                     </a>
@@ -266,7 +266,7 @@ export function Footer() {
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
               >
-                <Heart className="w-4 h-4 text-fuchsia-400 fill-current" />
+                <Heart className="w-4 h-4 text-slate-400 fill-current" />
               </motion.span>{" "}
               All rights reserved.
             </motion.p>
@@ -284,11 +284,11 @@ export function Footer() {
                     key={item}
                     href="#"
                     whileHover={{ y: -2 }}
-                    className="text-gray-400 hover:text-fuchsia-400 transition-all duration-300 relative group"
+                    className="text-gray-400 hover:text-slate-400 transition-all duration-300 relative group"
                   >
                     <span className="relative z-10">{item}</span>
                     <motion.div
-                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-pink-400 group-hover:w-full transition-all duration-300"
+                      className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-slate-400 to-slate-300 group-hover:w-full transition-all duration-300"
                     />
                   </motion.a>
                 ))}
@@ -300,10 +300,10 @@ export function Footer() {
                 whileHover={{ 
                   scale: 1.1, 
                   y: -3,
-                  boxShadow: "0 10px 25px rgba(217, 70, 239, 0.3)"
+                  boxShadow: "0 10px 25px rgba(123, 104, 238, 0.3)"
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 rounded-full bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 flex items-center justify-center transition-all duration-300 shadow-lg"
+                className="w-10 h-10 rounded-full bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 flex items-center justify-center transition-all duration-300 shadow-lg"
                 aria-label="Scroll to top"
               >
                 <ArrowUp className="w-5 h-5 text-white" />
@@ -315,7 +315,7 @@ export function Footer() {
 
       {/* Animated bottom gradient line */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent"
+        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-500 to-transparent"
         animate={{
           opacity: [0.3, 0.8, 0.3],
           scaleX: [0.8, 1, 0.8],

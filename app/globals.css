@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --medium-slate-blue: #7B68EE;
+  --periwinkle: #CCCCFF;
+  --medium-slate-blue-dark: #6A5ACD;
+  --periwinkle-light: #E6E6FF;
+  --medium-slate-blue-light: #9370DB;
 }
 
 @theme inline {
