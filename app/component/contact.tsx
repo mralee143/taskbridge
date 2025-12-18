@@ -120,7 +120,7 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -15 }}
             transition={{ 
               duration: 1.2, 
-              type: "spring",
+              type: "spring" as const,
               stiffness: 80,
               damping: 15
             }}
@@ -269,7 +269,7 @@ export function Contact() {
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: 100, rotateY: 15 }}
             transition={{ 
               duration: 1.2, 
-              type: "spring",
+              type: "spring" as const,
               stiffness: 80,
               damping: 15
             }}
