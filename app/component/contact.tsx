@@ -15,26 +15,26 @@ export function Contact() {
       title: "Email Us",
       detail: "hello@taskbridge.com",
       link: "mailto:hello@taskbridge.com",
-      color: "from-slate-500 to-slate-600",
+      color: "from-[#2b6777] to-[#1f4d57]",
     },
     {
       icon: Phone,
       title: "Call Us",
       detail: "+1 (555) 123-4567",
       link: "tel:+15551234567",
-      color: "from-slate-600 to-slate-700",
+      color: "from-[#1f4d57] to-[#163a42]",
     },
     {
       icon: MapPin,
       title: "Visit Us",
       detail: "123 Business Ave, Tech City",
       link: "#",
-      color: "from-slate-400 to-slate-500",
+      color: "from-[#3d8a9a] to-[#2b6777]",
     },
   ];
 
   return (
-    <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800/20 to-slate-900 overflow-hidden">
+    <section id="contact" className="relative py-20 md:py-32 bg-gradient-to-br from-[#2b6777] via-[#3d8a9a]/20 to-[#2b6777] overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -48,7 +48,7 @@ export function Contact() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-slate-500/10 rounded-full blur-3xl"
+          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-[#2b6777]/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -61,7 +61,7 @@ export function Contact() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-slate-600/10 rounded-full blur-3xl"
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-[#3d8a9a]/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -75,7 +75,7 @@ export function Contact() {
           className="text-center mb-16"
         >
           <motion.span 
-            className="inline-flex items-center gap-2 px-6 py-3 mb-6 text-sm bg-slate-500/20 text-slate-300 rounded-full border border-slate-500/30 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-white rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
           >
             <MessageCircle size={16} />
@@ -90,7 +90,7 @@ export function Contact() {
           >
             Let's Build Something{" "}
             <motion.span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-slate-300 to-slate-500"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-white to-[#4fa6b8]"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
@@ -134,12 +134,12 @@ export function Contact() {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-              className="bg-gradient-to-br from-slate-800/90 via-slate-800/70 to-slate-900/90 backdrop-blur-md rounded-3xl p-8 border border-slate-600/30 hover:border-fuchsia-500/50 transition-all duration-500 shadow-2xl"
+              className="bg-gradient-to-br from-[#2b6777]/90 via-[#2b6777]/70 to-[#1f4d57]/90 backdrop-blur-md rounded-3xl p-8 border border-[#2b6777]/30 hover:border-[#3d8a9a]/50 transition-all duration-500 shadow-2xl"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Form glow effect */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-slate-500/5 to-slate-400/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/5 to-[#3d8a9a]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 animate={{
                   background: [
                     "radial-gradient(circle at 20% 20%, rgba(123, 104, 238, 0.05), transparent)",
@@ -165,9 +165,9 @@ export function Contact() {
                       id="name"
                       whileFocus={{ 
                         scale: 1.02,
-                        boxShadow: "0 0 20px rgba(217, 70, 239, 0.3)"
+                        boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                       }}
-                      className="w-full px-4 py-4 bg-slate-900/80 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all duration-300 backdrop-blur-sm"
+                      className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
                       placeholder="John Doe"
                     />
                   </motion.div>
@@ -185,9 +185,9 @@ export function Contact() {
                       id="email"
                       whileFocus={{ 
                         scale: 1.02,
-                        boxShadow: "0 0 20px rgba(217, 70, 239, 0.3)"
+                        boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                       }}
-                      className="w-full px-4 py-4 bg-slate-900/80 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all duration-300 backdrop-blur-sm"
+                      className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
                       placeholder="john@example.com"
                     />
                   </motion.div>
@@ -205,9 +205,9 @@ export function Contact() {
                     id="service"
                     whileFocus={{ 
                       scale: 1.02,
-                      boxShadow: "0 0 20px rgba(217, 70, 239, 0.3)"
+                      boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                     }}
-                    className="w-full px-4 py-4 bg-slate-900/80 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all duration-300 backdrop-blur-sm"
+                    className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
                   >
                     <option>Select a service</option>
                     <option>Graphics Designing</option>
@@ -231,9 +231,9 @@ export function Contact() {
                     rows={6}
                     whileFocus={{ 
                       scale: 1.02,
-                      boxShadow: "0 0 20px rgba(217, 70, 239, 0.3)"
+                      boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                     }}
-                    className="w-full px-4 py-4 bg-slate-900/80 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-fuchsia-500 focus:ring-2 focus:ring-fuchsia-500/20 transition-all duration-300 resize-none backdrop-blur-sm"
+                    className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 resize-none backdrop-blur-sm"
                     placeholder="Tell us about your project..."
                   />
                 </motion.div>

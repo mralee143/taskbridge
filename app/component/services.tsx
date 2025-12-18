@@ -11,40 +11,40 @@ const services = [
     title: "Graphics Designing",
     description: "Create stunning visual identities, logos, and brand materials that captivate your audience and stand out in the market.",
     features: ["Logo Design", "Brand Identity", "Marketing Materials", "Social Media Graphics"],
-    color: "from-slate-500 to-slate-600",
-    gradient: "from-slate-500/20 to-slate-600/20",
+    color: "from-[#2b6777] to-[#1f4d57]",
+    gradient: "from-[#2b6777]/20 to-[#1f4d57]/20",
   },
   {
     icon: Search,
     title: "SEO Services",
     description: "Boost your online visibility with strategic SEO optimization that drives organic traffic and improves search rankings.",
     features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Analytics & Reporting"],
-    color: "from-slate-600 to-slate-700",
-    gradient: "from-slate-600/20 to-slate-700/20",
+    color: "from-[#1f4d57] to-[#163a42]",
+    gradient: "from-[#1f4d57]/20 to-[#163a42]/20",
   },
   {
     icon: TrendingUp,
     title: "Digital Marketing",
     description: "Comprehensive marketing strategies that connect with your target audience and deliver measurable ROI across all channels.",
     features: ["Social Media Marketing", "Email Campaigns", "Content Strategy", "PPC Advertising"],
-    color: "from-slate-400 to-slate-500",
-    gradient: "from-slate-400/20 to-slate-500/20",
+    color: "from-[#3d8a9a] to-[#2b6777]",
+    gradient: "from-[#3d8a9a]/20 to-[#2b6777]/20",
   },
   {
     icon: Code,
     title: "Web Development",
     description: "Build powerful, responsive websites and web applications with cutting-edge technologies and best practices.",
     features: ["Custom Websites", "E-commerce Solutions", "Web Applications", "Maintenance & Support"],
-    color: "from-slate-700 to-slate-800",
-    gradient: "from-slate-700/20 to-slate-800/20",
+    color: "from-[#163a42] to-[#0d262c]",
+    gradient: "from-[#163a42]/20 to-[#0d262c]/20",
   },
   {
     icon: Bot,
     title: "AI Chatbot",
     description: "Implement intelligent chatbot solutions that provide 24/7 customer support and enhance user engagement.",
     features: ["Custom AI Training", "Multi-Platform Integration", "Natural Language Processing", "Analytics Dashboard"],
-    color: "from-slate-800 to-slate-900",
-    gradient: "from-slate-800/20 to-slate-900/20",
+    color: "from-[#0d262c] to-[#051317]",
+    gradient: "from-[#0d262c]/20 to-[#051317]/20",
   },
 ];
 
@@ -94,7 +94,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         }
       }}
       whileTap={{ scale: 0.95 }}
-      className="group relative bg-gradient-to-br from-slate-800/90 via-slate-800/70 to-slate-900/90 backdrop-blur-md rounded-3xl p-8 border border-slate-600/30 hover:border-slate-400/60 transition-all duration-700 overflow-hidden shadow-2xl hover:shadow-slate-500/20"
+      className="group relative bg-gradient-to-br from-[#2b6777]/90 via-[#2b6777]/70 to-[#1f4d57]/90 backdrop-blur-md rounded-3xl p-8 border border-[#2b6777]/30 hover:border-[#3d8a9a]/60 transition-all duration-700 overflow-hidden shadow-2xl hover:shadow-[#2b6777]/20"
       style={{ 
         perspective: "1000px",
         transformStyle: "preserve-3d"
@@ -143,7 +143,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         ].map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute bg-slate-400/30 rounded-full blur-sm"
+            className="absolute bg-[#2b6777]/30 rounded-full blur-sm"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -196,7 +196,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             duration: 0.8,
             ease: "easeOut"
           }}
-          className={`relative w-24 h-24 rounded-3xl bg-gradient-to-br ${service.color} p-5 mb-8 shadow-2xl shadow-slate-500/30 group-hover:shadow-slate-500/60 group-hover:shadow-2xl`}
+          className={`relative w-24 h-24 rounded-3xl bg-gradient-to-br ${service.color} p-5 mb-8 shadow-2xl shadow-[#6666ff]/30 group-hover:shadow-[#6666ff]/60 group-hover:shadow-2xl`}
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Icon glow effect */}
@@ -227,7 +227,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
         {/* Title with gradient effect */}
         <motion.h3 
-          className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-slate-400 group-hover:to-slate-300 transition-all duration-300"
+          className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#8080ff] group-hover:to-white transition-all duration-300"
           whileHover={{ scale: 1.05 }}
         >
           {service.title}
@@ -323,7 +323,7 @@ export function Services() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800/20 to-slate-900">
+    <section id="services" className="relative py-20 md:py-32 bg-gradient-to-br from-[#2b6777] via-[#3d8a9a]/20 to-[#2b6777]">
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -336,7 +336,7 @@ export function Services() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-slate-500/5 rounded-full blur-3xl"
+          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-[#2b6777]/5 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -348,7 +348,7 @@ export function Services() {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-slate-600/5 rounded-full blur-3xl"
+          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-[#3d8a9a]/5 rounded-full blur-3xl"
         />
       </div>
 
@@ -362,7 +362,7 @@ export function Services() {
           className="text-center mb-16"
         >
           <motion.span 
-            className="inline-block px-6 py-3 mb-6 text-sm bg-slate-500/20 text-slate-300 rounded-full border border-slate-500/30 backdrop-blur-sm"
+            className="inline-block px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-white rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
           >
             ✨ What We Offer
@@ -375,7 +375,7 @@ export function Services() {
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-slate-300 to-slate-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-white to-[#4fa6b8]">
               Services
             </span>
           </motion.h2>

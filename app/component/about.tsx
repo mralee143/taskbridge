@@ -19,21 +19,21 @@ export function About() {
   ];
 
   const stats = [
-    { title: "Years Experience", value: "10+", icon: Award, color: "from-slate-500 to-slate-600" },
-    { title: "Projects Delivered", value: "500+", icon: Target, color: "from-slate-600 to-slate-700" },
-    { title: "Client Retention", value: "95%", icon: Users, color: "from-slate-400 to-slate-500" },
-    { title: "Team Size", value: "50+", icon: Zap, color: "from-slate-700 to-slate-800" },
+    { title: "Years Experience", value: "10+", icon: Award, color: "from-[#6666ff] to-[#4d4dcc]" },
+    { title: "Projects Delivered", value: "500+", icon: Target, color: "from-[#4d4dcc] to-[#333399]" },
+    { title: "Client Retention", value: "95%", icon: Users, color: "from-[#8080ff] to-[#6666ff]" },
+    { title: "Team Size", value: "50+", icon: Zap, color: "from-[#333399] to-[#1a1a66]" },
   ];
 
   return (
     <section
       id="about"
-      className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800/30 to-slate-900 overflow-hidden"
+      className="relative py-20 md:py-32 bg-gradient-to-br from-[#6666ff] via-[#8080ff]/30 to-[#6666ff] overflow-hidden"
     >
       {/* Enhanced animated background */}
       <div className="absolute inset-0 opacity-20">
         <motion.div 
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-500 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#6666ff] rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.6, 0.3],
@@ -47,7 +47,7 @@ export function About() {
           }}
         />
         <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#8080ff] rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.4, 0.7, 0.4],
@@ -77,7 +77,7 @@ export function About() {
             style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
           >
             <motion.span 
-              className="inline-block px-6 py-3 mb-6 text-sm bg-slate-500/20 text-slate-300 rounded-full border border-slate-500/30 backdrop-blur-sm"
+              className="inline-block px-6 py-3 mb-6 text-sm bg-[#6666ff]/20 text-white rounded-full border border-[#6666ff]/30 backdrop-blur-sm"
               whileHover={{ scale: 1.05, rotateX: 5 }}
               style={{ transformStyle: "preserve-3d" }}
             >
@@ -92,7 +92,7 @@ export function About() {
             >
               Your Trusted{" "}
               <motion.span 
-                className="text-transparent bg-clip-text bg-gradient-to-r from-slate-400 via-slate-300 to-slate-500"
+                className="text-transparent bg-clip-text bg-gradient-to-r from-[#8080ff] via-white to-[#9999ff]"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
@@ -148,7 +148,7 @@ export function About() {
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <motion.div 
-                    className="flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-r from-slate-500/20 to-slate-400/20 flex items-center justify-center mt-0.5 border border-slate-500/30"
+                    className="flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-r from-[#6666ff]/20 to-[#8080ff]/20 flex items-center justify-center mt-0.5 border border-[#6666ff]/30"
                     whileHover={{ 
                       scale: 1.2,
                       rotate: 360,
@@ -156,7 +156,7 @@ export function About() {
                     }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Check size={14} className="text-slate-400" />
+                    <Check size={14} className="text-[#6666ff]" />
                   </motion.div>
                   <span className="text-gray-300 group-hover:text-white transition-colors duration-300">
                     {feature}
@@ -176,7 +176,7 @@ export function About() {
                 boxShadow: "0 15px 40px rgba(123, 104, 238, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white px-10 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-slate-500/50 font-semibold"
+              className="inline-block bg-gradient-to-r from-[#6666ff] to-[#4d4dcc] hover:from-[#4d4dcc] hover:to-[#333399] text-white px-10 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-[#6666ff]/50 font-semibold"
               style={{ transformStyle: "preserve-3d" }}
             >
               Start Your Project
@@ -212,7 +212,7 @@ export function About() {
                     z: 20,
                     transition: { duration: 0.3 }
                   }}
-                  className="group relative bg-gradient-to-br from-slate-800/80 via-slate-800/60 to-slate-900/80 backdrop-blur-md rounded-2xl p-6 border border-slate-600/30 hover:border-slate-500/50 transition-all duration-500 overflow-hidden"
+                  className="group relative bg-gradient-to-br from-[#6666ff]/80 via-[#6666ff]/60 to-[#4d4dcc]/80 backdrop-blur-md rounded-2xl p-6 border border-[#6666ff]/30 hover:border-[#8080ff]/50 transition-all duration-500 overflow-hidden"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   {/* Animated background */}
@@ -268,7 +268,7 @@ export function About() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-slate-500/30 to-slate-400/30 rounded-full blur-2xl"
+              className="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-[#6666ff]/30 to-[#8080ff]/30 rounded-full blur-2xl"
             />
 
             <motion.div
@@ -282,7 +282,7 @@ export function About() {
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute -bottom-12 -left-12 w-40 h-40 bg-gradient-to-br from-slate-600/30 to-slate-500/30 rounded-full blur-2xl"
+              className="absolute -bottom-12 -left-12 w-40 h-40 bg-gradient-to-br from-[#4d4dcc]/30 to-[#6666ff]/30 rounded-full blur-2xl"
             />
           </motion.div>
         </div>

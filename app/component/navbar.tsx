@@ -39,15 +39,15 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-slate-900/95 backdrop-blur-md border-b border-slate-600/50 shadow-lg shadow-slate-500/10"
-          : "bg-gradient-to-r from-slate-900/80 via-slate-800/80 to-slate-900/80 backdrop-blur-sm"
+          ? "bg-[#6666ff]/95 backdrop-blur-md border-b border-[#6666ff]/50 shadow-lg shadow-[#6666ff]/10"
+          : "bg-gradient-to-r from-[#6666ff]/80 via-[#8080ff]/80 to-[#6666ff]/80 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-slate-500 to-slate-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-[#6666ff] to-[#4d4dcc] rounded-lg flex items-center justify-center">
               <div className="w-4 h-4 bg-white rounded-sm"></div>
             </div>
             <h1 className="text-xl font-bold text-white font-[var(--font-space-grotesk)] tracking-wide">
@@ -110,7 +110,7 @@ export function Navbar() {
               <input
                 type="text"
                 placeholder="Search..."
-                className="bg-gray-800 text-gray-300 placeholder-gray-500 px-4 py-2 pl-10 pr-8 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 w-64"
+                className="bg-gray-800 text-gray-300 placeholder-gray-500 px-4 py-2 pl-10 pr-8 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#6666ff] w-64"
               />
               <Search className="absolute left-3 top-2.5 text-gray-500" size={16} />
               <span className="absolute right-3 top-2.5 text-gray-500 text-xs">⌘K</span>
@@ -135,7 +135,7 @@ export function Navbar() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-600/50"
+          className="md:hidden bg-[#6666ff]/95 backdrop-blur-md border-t border-[#6666ff]/50"
         >
           <div className="px-4 pt-2 pb-3 space-y-1">
             {navLinks.map((link) => (
@@ -148,7 +148,7 @@ export function Navbar() {
                 {link.name}
               </a>
             ))}
-            <div className="pt-4 border-t border-slate-600/50 mt-4">
+            <div className="pt-4 border-t border-[#6666ff]/50 mt-4">
               <div className="flex items-center space-x-4 px-3">
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Linkedin size={20} />
