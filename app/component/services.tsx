@@ -50,138 +50,97 @@ const services = [
 
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   
-  // Alternating animation directions: right, left, right, left, right
-  const isFromRight = index % 2 === 0;
+  // Simplified animation for better mobile performance
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   
   return (
     <motion.div
       ref={ref}
       initial={{ 
         opacity: 0, 
-        x: isFromRight ? 150 : -150,
-        y: 50,
-        rotateY: isFromRight ? 25 : -25,
-        scale: 0.8
+        y: 60,
+        scale: 0.9
       }}
       animate={isInView ? { 
         opacity: 1, 
-        x: 0,
         y: 0,
-        rotateY: 0,
         scale: 1
       } : { 
         opacity: 0, 
-        x: isFromRight ? 150 : -150,
-        y: 50,
-        rotateY: isFromRight ? 25 : -25,
-        scale: 0.8
+        y: 60,
+        scale: 0.9
       }}
       transition={{ 
-        duration: 1.2, 
-        delay: index * 0.15,
-        ease: "easeOut"
+        duration: 0.8, 
+        delay: index * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smoothness
+        type: "spring",
+        stiffness: 100,
+        damping: 15
       }}
       whileHover={{ 
         y: -20, 
         scale: 1.05,
         rotateX: 8,
-        rotateZ: isFromRight ? 2 : -2,
         transition: { 
           duration: 0.4,
           ease: "easeOut"
         }
       }}
-      whileTap={{ scale: 0.95 }}
-      className="group relative bg-gradient-to-br from-[#2b6777]/90 via-[#2b6777]/70 to-[#1f4d57]/90 backdrop-blur-md rounded-3xl p-8 border border-[#2b6777]/30 hover:border-[#3d8a9a]/60 transition-all duration-700 overflow-hidden shadow-2xl hover:shadow-[#2b6777]/20"
+      whileTap={{ scale: 0.98 }}
+      className="group relative bg-gradient-to-br from-[#2b6777]/90 via-[#2b6777]/70 to-[#1f4d57]/90 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-[#2b6777]/30 hover:border-[#3d8a9a]/60 transition-all duration-700 overflow-hidden shadow-2xl hover:shadow-[#2b6777]/20"
       style={{ 
         perspective: "1000px",
         transformStyle: "preserve-3d"
       }}
     >
-      {/* Animated background gradient with morphing effect */}
+      {/* Simplified background effect for better performance */}
       <motion.div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"
-        animate={{
-          background: [
-            `radial-gradient(circle at 20% 20%, ${service.color.split(' ')[1]}/15, transparent 50%)`,
-            `radial-gradient(circle at 80% 80%, ${service.color.split(' ')[3]}/15, transparent 50%)`,
-            `radial-gradient(circle at 50% 50%, ${service.color.split(' ')[1]}/10, ${service.color.split(' ')[3]}/10)`,
-            `radial-gradient(circle at 20% 80%, ${service.color.split(' ')[3]}/15, transparent 50%)`,
-            `radial-gradient(circle at 80% 20%, ${service.color.split(' ')[1]}/15, transparent 50%)`,
-          ]
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+        style={{
+          background: `radial-gradient(circle at 50% 50%, ${service.color.split(' ')[1]}/10, transparent 70%)`,
         }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Glowing border effect */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+      {/* Subtle glow effect */}
+      <div
+        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-50 transition-opacity duration-500"
         style={{
-          background: `linear-gradient(45deg, ${service.color.split(' ')[1]}/20, transparent, ${service.color.split(' ')[3]}/20)`,
-          padding: '2px',
-        }}
-        animate={{
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "linear",
+          background: `linear-gradient(45deg, ${service.color.split(' ')[1]}/10, transparent, ${service.color.split(' ')[3]}/10)`,
         }}
       />
       
-      {/* Enhanced floating particles */}
-      <div className="absolute inset-0 overflow-hidden rounded-3xl">
+      {/* Simplified floating particles for better performance */}
+      <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-60">
         {[
-          { x: 15, y: 20, size: 2, delay: 0 },
-          { x: 75, y: 35, size: 1.5, delay: 0.5 },
-          { x: 45, y: 70, size: 2.5, delay: 1 },
-          { x: 85, y: 15, size: 1, delay: 1.5 },
-          { x: 25, y: 85, size: 1.8, delay: 0.8 },
+          { x: 20, y: 30, size: 1.5 },
+          { x: 80, y: 70, size: 1 },
+          { x: 60, y: 20, size: 1.2 },
         ].map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute bg-[#2b6777]/30 rounded-full blur-sm"
+            className="absolute bg-[#2b6777]/20 rounded-full blur-sm"
             style={{
               left: `${particle.x}%`,
               top: `${particle.y}%`,
-              width: `${particle.size * 4}px`,
-              height: `${particle.size * 4}px`,
+              width: `${particle.size * 6}px`,
+              height: `${particle.size * 6}px`,
             }}
             animate={{
-              y: [-15, 15, -15],
-              x: [-8, 8, -8],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [0.8, 1.2, 0.8],
+              y: [-10, 10, -10],
+              opacity: [0.3, 0.6, 0.3],
             }}
             transition={{
-              duration: 3 + particle.delay,
+              duration: 4,
               repeat: Infinity,
-              delay: particle.delay,
+              delay: i * 0.5,
               ease: "easeInOut",
             }}
           />
         ))}
       </div>
-
-      {/* Shimmer effect */}
-      <motion.div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100"
-        animate={{
-          background: [
-            "linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)",
-            "linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)",
-          ],
-          x: ["-100%", "100%"],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          repeatDelay: 3,
-        }}
-      />
 
       <div className="relative z-10">
         {/* Icon with enhanced 3D animation */}
@@ -196,12 +155,12 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             duration: 0.8,
             ease: "easeOut"
           }}
-          className={`relative w-24 h-24 rounded-3xl bg-gradient-to-br ${service.color} p-5 mb-8 shadow-2xl shadow-[#6666ff]/30 group-hover:shadow-[#6666ff]/60 group-hover:shadow-2xl`}
+          className={`relative w-20 h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl bg-gradient-to-br ${service.color} p-4 md:p-5 mb-6 md:mb-8 shadow-2xl shadow-[#2b6777]/30 group-hover:shadow-[#2b6777]/60 group-hover:shadow-2xl`}
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Icon glow effect */}
           <motion.div
-            className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${service.color} blur-xl opacity-0 group-hover:opacity-50`}
+            className={`absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br ${service.color} blur-xl opacity-0 group-hover:opacity-50`}
             animate={{
               scale: [1, 1.2, 1],
             }}
@@ -221,38 +180,37 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
               ease: "easeInOut",
             }}
           >
-            <service.icon className="relative z-10 w-full h-full text-white drop-shadow-2xl" />
+            <service.icon className="relative z-10 w-full h-full text-black drop-shadow-2xl" />
           </motion.div>
         </motion.div>
 
         {/* Title with gradient effect */}
         <motion.h3 
-          className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#8080ff] group-hover:to-white transition-all duration-300"
+          className="text-xl md:text-2xl font-bold text-black mb-3 md:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#3d8a9a] group-hover:to-black transition-all duration-300"
           whileHover={{ scale: 1.05 }}
         >
           {service.title}
         </motion.h3>
 
-        <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+        <p className="text-gray-400 mb-4 md:mb-6 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 text-sm md:text-base">
           {service.description}
         </p>
 
-        {/* Features with staggered animation */}
-        <div className="space-y-3 mb-6">
+        {/* Features with smooth animation */}
+        <div className="space-y-2 md:space-y-3 mb-4 md:mb-6">
           {service.features.map((feature, idx) => (
             <motion.div
               key={feature}
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              transition={{ delay: index * 0.2 + idx * 0.1 }}
-              whileHover={{ x: 5 }}
-              className="flex items-center gap-3 text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300"
+              initial={{ opacity: 0, x: -15 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
+              transition={{ 
+                delay: index * 0.1 + idx * 0.05,
+                duration: 0.5,
+                ease: "easeOut"
+              }}
+              className="flex items-center gap-3 text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300"
             >
-              <motion.div 
-                className="w-2 h-2 rounded-full bg-gradient-to-r from-slate-400 to-slate-300"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: idx * 0.2 }}
-              />
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#3d8a9a] flex-shrink-0" />
               {feature}
             </motion.div>
           ))}
@@ -264,18 +222,18 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             scale: 1.08,
             rotateX: 5,
             z: 20,
-            boxShadow: "0 15px 40px rgba(123, 104, 238, 0.4)"
+            boxShadow: "0 15px 40px rgba(43, 103, 119, 0.4)"
           }}
           whileTap={{ 
             scale: 0.95,
             rotateX: -2
           }}
-          className="w-full py-4 rounded-2xl border-2 border-slate-500/50 text-slate-400 hover:text-white hover:border-slate-400 transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm"
+          className="w-full py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-[#2b6777]/50 text-[#3d8a9a] hover:text-black hover:border-[#3d8a9a] transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm text-sm md:text-base"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Animated background layers */}
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-slate-500/0 via-slate-500/20 to-slate-400/0"
+            className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/0 via-[#2b6777]/20 to-[#3d8a9a]/0"
             animate={{
               x: ["-100%", "100%"],
             }}
@@ -287,11 +245,11 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
           />
           
           <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-slate-500/10 to-slate-400/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"
+            className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/10 to-[#3d8a9a]/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"
             animate={{
               background: [
-                "linear-gradient(45deg, rgba(123, 104, 238, 0.1), rgba(204, 204, 255, 0.1))",
-                "linear-gradient(225deg, rgba(204, 204, 255, 0.1), rgba(123, 104, 238, 0.1))",
+                "linear-gradient(45deg, rgba(43, 103, 119, 0.1), rgba(61, 138, 154, 0.1))",
+                "linear-gradient(225deg, rgba(61, 138, 154, 0.1), rgba(43, 103, 119, 0.1))",
               ]
             }}
             transition={{
@@ -362,20 +320,20 @@ export function Services() {
           className="text-center mb-16"
         >
           <motion.span 
-            className="inline-block px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-white rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
+            className="inline-block px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-black rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
           >
             ✨ What We Offer
           </motion.span>
           
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold text-white mb-6 font-[var(--font-space-grotesk)]"
+            className="text-4xl md:text-6xl font-bold text-black mb-6 font-[var(--font-space-grotesk)]"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-white to-[#4fa6b8]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-black to-[#4fa6b8]">
               Services
             </span>
           </motion.h2>

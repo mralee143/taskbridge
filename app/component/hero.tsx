@@ -40,7 +40,7 @@ const floatingVariants = {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#6666ff] via-[#8080ff] to-[#6666ff]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#2b6777] via-[#3d8a9a] to-[#2b6777]"
     >
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -55,7 +55,7 @@ const floatingVariants = {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-[#6666ff]/10 rounded-full blur-3xl"
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-[#2b6777]/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -68,7 +68,7 @@ const floatingVariants = {
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[#8080ff]/10 rounded-full blur-3xl"
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[#3d8a9a]/10 rounded-full blur-3xl"
         />
         
         {/* Floating particles */}
@@ -82,7 +82,7 @@ const floatingVariants = {
         ].map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-[#6666ff]/30 rounded-full"
+            className="absolute w-2 h-2 bg-[#2b6777]/30 rounded-full"
             style={{
               left: `${particle.left}%`,
               top: `${particle.top}%`,
@@ -111,7 +111,7 @@ const floatingVariants = {
           <motion.div variants={itemVariants}>
             <motion.span
               whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm bg-[#6666ff]/20 text-white rounded-full border border-[#6666ff]/30 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm bg-[#2b6777]/20 text-black rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
             >
               <Sparkles size={16} className="animate-pulse" />
               Your Digital Success Partner
@@ -121,7 +121,7 @@ const floatingVariants = {
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-[var(--font-space-grotesk)]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight font-[var(--font-space-grotesk)]"
           >
             <motion.span
               initial={{ opacity: 0, x: -50 }}
@@ -135,7 +135,7 @@ const floatingVariants = {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-transparent bg-clip-text bg-gradient-to-r from-[#8080ff] via-white to-[#9999ff]"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-black to-[#4fa6b8]"
             >
               With Digital Excellence
             </motion.span>
@@ -160,7 +160,7 @@ const floatingVariants = {
                 boxShadow: "0 20px 40px rgba(123, 104, 238, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="group bg-gradient-to-r from-[#6666ff] to-[#4d4dcc] hover:from-[#4d4dcc] hover:to-[#333399] text-white px-8 py-4 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#6666ff]/50"
+              className="group bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] text-black px-8 py-4 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#2b6777]/50"
             >
               <Target size={20} />
               Explore Services
@@ -176,7 +176,7 @@ const floatingVariants = {
                 backgroundColor: "rgba(123, 104, 238, 0.1)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-[#6666ff] text-[#6666ff] hover:bg-[#6666ff] hover:text-white px-8 py-4 rounded-lg transition-all duration-300"
+              className="border-2 border-[#2b6777] text-[#2b6777] hover:bg-[#2b6777] hover:text-black px-8 py-4 rounded-lg transition-all duration-300"
             >
               Get in Touch
             </motion.a>
@@ -214,10 +214,10 @@ const floatingVariants = {
                   animate="animate"
                   className="flex justify-center mb-2"
                 >
-                  <stat.icon className="text-[#6666ff] group-hover:text-[#8080ff] transition-colors" size={24} />
+                  <stat.icon className="text-[#2b6777] group-hover:text-[#3d8a9a] transition-colors" size={24} />
                 </motion.div>
                 <motion.div 
-                  className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#6666ff] to-[#8080ff] bg-clip-text text-transparent mb-2"
+                  className="text-3xl md:text-4xl font-bold text-gray-800 mb-2"
                   whileHover={{ scale: 1.1 }}
                 >
                   {stat.number}
@@ -246,12 +246,12 @@ const floatingVariants = {
       >
         <motion.div
           whileHover={{ scale: 1.2 }}
-          className="w-6 h-10 border-2 border-[#6666ff] rounded-full flex justify-center cursor-pointer"
+          className="w-6 h-10 border-2 border-[#2b6777] rounded-full flex justify-center cursor-pointer"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-[#6666ff] rounded-full mt-2"
+            className="w-1 h-3 bg-[#2b6777] rounded-full mt-2"
           />
         </motion.div>
       </motion.div>
