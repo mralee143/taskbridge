@@ -72,9 +72,7 @@ export function About() {
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -15 }}
             transition={{ 
               duration: 1.2, 
-              type: "spring",
-              stiffness: 80,
-              damping: 15
+              ease: "easeOut"
             }}
             style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
           >
@@ -139,8 +137,7 @@ export function About() {
                   transition={{ 
                     delay: 0.8 + index * 0.1,
                     duration: 0.6,
-                    type: "spring",
-                    stiffness: 150
+                    ease: "easeOut"
                   }}
                   whileHover={{ 
                     x: 10, 
@@ -192,9 +189,7 @@ export function About() {
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: 100, rotateY: 15 }}
             transition={{ 
               duration: 1.2, 
-              type: "spring",
-              stiffness: 80,
-              damping: 15
+              ease: "easeOut"
             }}
             className="relative"
             style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
@@ -208,8 +203,7 @@ export function About() {
                   transition={{ 
                     delay: 0.2 + index * 0.15,
                     duration: 0.8,
-                    type: "spring",
-                    stiffness: 120
+                    ease: "easeOut"
                   }}
                   whileHover={{ 
                     scale: 1.08,

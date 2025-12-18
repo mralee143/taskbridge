@@ -4,42 +4,39 @@ import { motion } from "motion/react";
 import { ArrowRight, Sparkles, Zap, Target } from "lucide-react";
 
 export function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
+ const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+} as const;
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring" as const,
-        damping: 12,
-        stiffness: 200
-      }
-    }
-  };
-
-  const floatingVariants = {
-    animate: {
-      y: [-20, 20, -20],
-      rotate: [0, 5, -5, 0],
-      transition: {
-        duration: 6,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    }
-  };
-
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+} as const;
+const floatingVariants = {
+  animate: {
+    y: [-20, 20, -20] as number[],
+    rotate: [0, 5, -5, 0] as number[],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut" as const,
+    },
+  },
+};
   return (
     <section
       id="home"
@@ -203,7 +200,7 @@ export function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ 
                   delay: 1.4 + index * 0.1,
-                  type: "spring" as const,
+                  duration: 0.6,
                   stiffness: 200
                 }}
                 whileHover={{ 
