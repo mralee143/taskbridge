@@ -50,7 +50,7 @@ export function Navbar() {
             <div className="w-8 h-8 bg-gradient-to-r from-[#2b6777] to-[#1f4d57] rounded-lg flex items-center justify-center">
               <div className="w-4 h-4 bg-white rounded-sm"></div>
             </div>
-            <h1 className="text-xl font-bold text-black font-[var(--font-space-grotesk)] tracking-wide">
+            <h1 className="text-xl font-bold text-white font-[var(--font-space-grotesk)] tracking-wide">
               TASKBRIDGE
             </h1>
           </div>
@@ -65,7 +65,7 @@ export function Navbar() {
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
                   >
-                    <button className="text-gray-300 hover:text-black transition-colors duration-200 text-sm font-medium flex items-center space-x-1">
+                    <button className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium flex items-center space-x-1">
                       <span>{link.name}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
@@ -75,7 +75,7 @@ export function Navbar() {
                           <a
                             key={service.name}
                             href={service.href}
-                            className="block px-4 py-2 text-sm text-gray-300 hover:text-black hover:bg-gray-700 transition-colors duration-200"
+                            className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-200"
                           >
                             {service.name}
                           </a>
@@ -86,7 +86,7 @@ export function Navbar() {
                 ) : (
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-black transition-colors duration-200 text-sm font-medium"
+                    className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium"
                   >
                     {link.name}
                   </a>
@@ -97,13 +97,13 @@ export function Navbar() {
 
           {/* Right side - Social icons and search */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="#" className="text-gray-400 hover:text-black transition-colors">
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">
               <Linkedin size={20} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-black transition-colors">
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">
               <Instagram size={20} />
             </a>
-            <a href="#" className="text-gray-400 hover:text-black transition-colors">
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">
               <Facebook size={20} />
             </a>
             <div className="relative">
@@ -121,7 +121,7 @@ export function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-black transition-colors"
+              className="text-gray-300 hover:text-white transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -143,20 +143,20 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-black block px-3 py-2 transition-colors duration-200 text-sm font-medium"
+                className="text-gray-300 hover:text-white block px-3 py-2 transition-colors duration-200 text-sm font-medium"
               >
                 {link.name}
               </a>
             ))}
             <div className="pt-4 border-t border-[#2b6777]/50 mt-4">
               <div className="flex items-center space-x-4 px-3">
-                <a href="#" className="text-gray-400 hover:text-black transition-colors">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Linkedin size={20} />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-black transition-colors">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-black transition-colors">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors">
                   <Facebook size={20} />
                 </a>
               </div>

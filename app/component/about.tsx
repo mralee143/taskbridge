@@ -77,7 +77,7 @@ export function About() {
             style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
           >
             <motion.span 
-              className="inline-block px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-black rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
+              className="inline-block px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-white rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
               whileHover={{ scale: 1.05, rotateX: 5 }}
               style={{ transformStyle: "preserve-3d" }}
             >
@@ -85,14 +85,14 @@ export function About() {
             </motion.span>
 
             <motion.h2 
-              className="text-4xl md:text-6xl font-bold text-black mb-8 font-[var(--font-space-grotesk)]"
+              className="text-4xl md:text-6xl font-bold text-white mb-8 font-[var(--font-space-grotesk)]"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
               Your Trusted{" "}
               <motion.span 
-                className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-black to-[#4fa6b8]"
+                className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-white to-[#4fa6b8]"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                 }}
@@ -176,7 +176,7 @@ export function About() {
                 boxShadow: "0 15px 40px rgba(123, 104, 238, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] text-black px-10 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-[#2b6777]/50 font-semibold"
+              className="inline-block bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] text-white px-10 py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-[#2b6777]/50 font-semibold"
               style={{ transformStyle: "preserve-3d" }}
             >
               Start Your Project
@@ -237,12 +237,12 @@ export function About() {
                     }}
                     transition={{ duration: 0.5 }}
                   >
-                    <stat.icon className="w-full h-full text-black" />
+                    <stat.icon className="w-full h-full text-white" />
                   </motion.div>
 
                   {/* Value */}
                   <motion.div 
-                    className="text-4xl md:text-5xl font-bold text-gray-800 mb-2"
+                    className="text-4xl md:text-5xl font-bold text-gray-300 mb-2"
                     whileHover={{ scale: 1.1 }}
                   >
                     {stat.value}

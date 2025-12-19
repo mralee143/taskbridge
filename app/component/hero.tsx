@@ -111,7 +111,7 @@ const floatingVariants = {
           <motion.div variants={itemVariants}>
             <motion.span
               whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm bg-[#2b6777]/20 text-black rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 text-sm bg-[#2b6777]/20 text-white rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
             >
               <Sparkles size={16} className="animate-pulse" />
               Your Digital Success Partner
@@ -121,7 +121,7 @@ const floatingVariants = {
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black mb-6 leading-tight font-[var(--font-space-grotesk)]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight font-[var(--font-space-grotesk)]"
           >
             <motion.span
               initial={{ opacity: 0, x: -50 }}
@@ -135,7 +135,7 @@ const floatingVariants = {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.8 }}
-              className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-black to-[#4fa6b8]"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-white to-[#4fa6b8]"
             >
               With Digital Excellence
             </motion.span>
@@ -160,7 +160,7 @@ const floatingVariants = {
                 boxShadow: "0 20px 40px rgba(123, 104, 238, 0.4)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="group bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] text-black px-8 py-4 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#2b6777]/50"
+              className="group bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] text-white px-8 py-4 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#2b6777]/50"
             >
               <Target size={20} />
               Explore Services
@@ -176,7 +176,7 @@ const floatingVariants = {
                 backgroundColor: "rgba(123, 104, 238, 0.1)"
               }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-[#2b6777] text-[#2b6777] hover:bg-[#2b6777] hover:text-black px-8 py-4 rounded-lg transition-all duration-300"
+              className="border-2 border-[#2b6777] text-[#2b6777] hover:bg-[#2b6777] hover:text-white px-8 py-4 rounded-lg transition-all duration-300"
             >
               Get in Touch
             </motion.a>
@@ -217,7 +217,7 @@ const floatingVariants = {
                   <stat.icon className="text-[#2b6777] group-hover:text-[#3d8a9a] transition-colors" size={24} />
                 </motion.div>
                 <motion.div 
-                  className="text-3xl md:text-4xl font-bold text-gray-800 mb-2"
+                  className="text-3xl md:text-4xl font-bold text-gray-300 mb-2"
                   whileHover={{ scale: 1.1 }}
                 >
                   {stat.number}

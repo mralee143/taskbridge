@@ -75,7 +75,7 @@ export function Contact() {
           className="text-center mb-16"
         >
           <motion.span 
-            className="inline-flex items-center gap-2 px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-black rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-white rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
           >
             <MessageCircle size={16} />
@@ -83,14 +83,14 @@ export function Contact() {
           </motion.span>
 
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold text-black mb-6 font-[var(--font-space-grotesk)]"
+            className="text-4xl md:text-6xl font-bold text-white mb-6 font-[var(--font-space-grotesk)]"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             Let's Build Something{" "}
             <motion.span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-black to-[#4fa6b8]"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-white to-[#4fa6b8]"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
@@ -167,7 +167,7 @@ export function Contact() {
                         scale: 1.02,
                         boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                       }}
-                      className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-black focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
+                      className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
                       placeholder="John Doe"
                     />
                   </motion.div>
@@ -187,7 +187,7 @@ export function Contact() {
                         scale: 1.02,
                         boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                       }}
-                      className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-black focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
+                      className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
                       placeholder="john@example.com"
                     />
                   </motion.div>
@@ -207,7 +207,7 @@ export function Contact() {
                       scale: 1.02,
                       boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                     }}
-                    className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-black focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
+                    className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 backdrop-blur-sm"
                   >
                     <option>Select a service</option>
                     <option>Graphics Designing</option>
@@ -233,7 +233,7 @@ export function Contact() {
                       scale: 1.02,
                       boxShadow: "0 0 20px rgba(43, 103, 119, 0.3)"
                     }}
-                    className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-black focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 resize-none backdrop-blur-sm"
+                    className="w-full px-4 py-4 bg-[#1f4d57]/80 border border-[#2b6777] rounded-xl text-white focus:outline-none focus:border-[#3d8a9a] focus:ring-2 focus:ring-[#3d8a9a]/20 transition-all duration-300 resize-none backdrop-blur-sm"
                     placeholder="Tell us about your project..."
                   />
                 </motion.div>
@@ -249,7 +249,7 @@ export function Contact() {
                     boxShadow: "0 15px 40px rgba(123, 104, 238, 0.4)"
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] text-black px-8 py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#2b6777]/50 font-semibold text-lg relative overflow-hidden group"
+                  className="w-full bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] text-white px-8 py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#2b6777]/50 font-semibold text-lg relative overflow-hidden group"
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <motion.div
@@ -287,7 +287,7 @@ export function Contact() {
               className="bg-gradient-to-br from-[#2b6777]/90 via-[#2b6777]/70 to-[#1f4d57]/90 backdrop-blur-md rounded-3xl p-8 border border-[#2b6777]/30 hover:border-[#3d8a9a]/50 transition-all duration-500 shadow-2xl"
               style={{ transformStyle: "preserve-3d" }}
             >
-              <h3 className="text-2xl font-bold text-black mb-8 font-[var(--font-space-grotesk)]">
+              <h3 className="text-2xl font-bold text-white mb-8 font-[var(--font-space-grotesk)]">
                 Contact Information
               </h3>
               
@@ -314,14 +314,14 @@ export function Contact() {
                       }}
                       transition={{ duration: 0.5 }}
                     >
-                      <item.icon className="w-full h-full text-black" />
+                      <item.icon className="w-full h-full text-white" />
                     </motion.div>
                     
                     <div>
                       <div className="text-sm text-gray-400 mb-1 font-medium">
                         {item.title}
                       </div>
-                      <div className="text-lg text-black group-hover:text-slate-400 transition-colors duration-300 font-semibold">
+                      <div className="text-lg text-white group-hover:text-slate-400 transition-colors duration-300 font-semibold">
                         {item.detail}
                       </div>
                     </div>
@@ -338,7 +338,7 @@ export function Contact() {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-              className="bg-gradient-to-br from-[#2b6777] to-[#1f4d57] rounded-3xl p-8 text-black shadow-2xl relative overflow-hidden"
+              className="bg-gradient-to-br from-[#2b6777] to-[#1f4d57] rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Animated background pattern */}
@@ -376,7 +376,7 @@ export function Contact() {
                       whileHover={{ scale: 1.1 }}
                       className="text-center"
                     >
-                      <div className="text-3xl font-bold text-gray-800 mb-2">{stat.value}</div>
+                      <div className="text-3xl font-bold text-gray-300 mb-2">{stat.value}</div>
                       <div className="text-sm text-slate-100 font-medium">{stat.label}</div>
                     </motion.div>
                   ))}

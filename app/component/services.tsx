@@ -180,13 +180,13 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
               ease: "easeInOut",
             }}
           >
-            <service.icon className="relative z-10 w-full h-full text-black drop-shadow-2xl" />
+            <service.icon className="relative z-10 w-full h-full text-white drop-shadow-2xl" />
           </motion.div>
         </motion.div>
 
         {/* Title with gradient effect */}
         <motion.h3 
-          className="text-xl md:text-2xl font-bold text-black mb-3 md:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#3d8a9a] group-hover:to-black transition-all duration-300"
+          className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#3d8a9a] group-hover:to-white transition-all duration-300"
           whileHover={{ scale: 1.05 }}
         >
           {service.title}
@@ -228,7 +228,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             scale: 0.95,
             rotateX: -2
           }}
-          className="w-full py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-[#2b6777]/50 text-[#3d8a9a] hover:text-black hover:border-[#3d8a9a] transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm text-sm md:text-base"
+          className="w-full py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-[#2b6777]/50 text-[#3d8a9a] hover:text-white hover:border-[#3d8a9a] transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm text-sm md:text-base"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Animated background layers */}
@@ -320,20 +320,20 @@ export function Services() {
           className="text-center mb-16"
         >
           <motion.span 
-            className="inline-block px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-black rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
+            className="inline-block px-6 py-3 mb-6 text-sm bg-[#2b6777]/20 text-white rounded-full border border-[#2b6777]/30 backdrop-blur-sm"
             whileHover={{ scale: 1.05 }}
           >
             ✨ What We Offer
           </motion.span>
           
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold text-black mb-6 font-[var(--font-space-grotesk)]"
+            className="text-4xl md:text-6xl font-bold text-white mb-6 font-[var(--font-space-grotesk)]"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             Our{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-black to-[#4fa6b8]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-white to-[#4fa6b8]">
               Services
             </span>
           </motion.h2>

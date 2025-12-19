@@ -132,11 +132,11 @@ export function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
             animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            <motion.span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-800 via-black to-gray-700">
+            <motion.span className="text-white">
               Welcome to{" "}
             </motion.span>
             <motion.span 
-              className="text-transparent bg-clip-text bg-gradient-to-r from-[#2b6777] via-[#3d8a9a] to-[#4fa6b8]"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#3d8a9a] to-white"
               animate={{
                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
               }}
@@ -152,7 +152,7 @@ export function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
 
           {/* Tagline */}
           <motion.p 
-            className="text-xl md:text-2xl lg:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-800 to-gray-600 mb-8 leading-relaxed"
+            className="text-xl md:text-2xl lg:text-3xl text-white/80 mb-8 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={showContent ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
@@ -178,7 +178,7 @@ export function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
                 ease: "easeInOut",
               }}
             >
-              <Sparkles className="w-10 h-10 text-[#2b6777]" />
+              <Sparkles className="w-10 h-10 text-white/60" />
             </motion.div>
           </motion.div>
 
@@ -193,7 +193,7 @@ export function WelcomeScreen({ onComplete }: WelcomeScreenProps) {
               {[0, 1, 2].map((i) => (
                 <motion.div
                   key={i}
-                  className="w-3 h-3 bg-[#2b6777] rounded-full"
+                  className="w-3 h-3 bg-white/40 rounded-full"
                   animate={{
                     scale: [1, 1.5, 1],
                     opacity: [0.4, 1, 0.4],

@@ -109,7 +109,7 @@ export function Footer() {
                   className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1f4d57] to-[#163a42] hover:from-[#2b6777] hover:to-[#1f4d57] flex items-center justify-center transition-all duration-300 border border-[#2b6777] hover:border-[#3d8a9a]/50 group"
                   aria-label={social.name}
                 >
-                  <span className="text-gray-400 group-hover:text-black font-bold text-sm">
+                  <span className="text-gray-400 group-hover:text-white font-bold text-sm">
                     {social.icon}
                   </span>
                 </motion.a>
@@ -306,7 +306,7 @@ export function Footer() {
                 className="w-10 h-10 rounded-full bg-gradient-to-r from-[#2b6777] to-[#1f4d57] hover:from-[#1f4d57] hover:to-[#163a42] flex items-center justify-center transition-all duration-300 shadow-lg"
                 aria-label="Scroll to top"
               >
-                <ArrowUp className="w-5 h-5 text-black" />
+                <ArrowUp className="w-5 h-5 text-white" />
               </motion.button>
             </div>
           </div>
