@@ -119,10 +119,11 @@ export function Contact() {
             initial={{ opacity: 0, x: -100, rotateY: -15 }}
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: -100, rotateY: -15 }}
             transition={{ 
-              duration: 1.2, 
+              duration: 0.8, 
               type: "spring" as const,
-              stiffness: 80,
-              damping: 15
+              stiffness: 100,
+              damping: 20,
+              ease: [0.25, 0.46, 0.45, 0.94]
             }}
             className="relative"
             style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
@@ -268,10 +269,11 @@ export function Contact() {
             initial={{ opacity: 0, x: 100, rotateY: 15 }}
             animate={isInView ? { opacity: 1, x: 0, rotateY: 0 } : { opacity: 0, x: 100, rotateY: 15 }}
             transition={{ 
-              duration: 1.2, 
+              duration: 0.8, 
               type: "spring" as const,
-              stiffness: 80,
-              damping: 15
+              stiffness: 100,
+              damping: 20,
+              ease: [0.25, 0.46, 0.45, 0.94]
             }}
             className="space-y-8"
             style={{ perspective: "1000px", transformStyle: "preserve-3d" }}

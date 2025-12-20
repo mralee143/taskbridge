@@ -3,67 +3,9 @@
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { ArrowLeft, Palette, Star, Download, Eye, Video } from "lucide-react";
 import Image from "next/image";
-
-const portfolioItems = [
-  {
-    id: 1,
-    title: "Brand Identity Design",
-    category: "Branding",
-    image: "/graphic-design/branding main.jpeg",
-    description: "Complete brand identity package with logo, colors, and guidelines"
-  },
-  {
-    id: 2,
-    title: "Logo Design Collection",
-    category: "Logo Design",
-    image: "/graphic-design/logo main.jpeg",
-    description: "Creative and memorable logo designs for various industries"
-  },
-  {
-    id: 3,
-    title: "Social Media Graphics",
-    category: "Social Media",
-    image: "/graphic-design/socail meadia main.jpeg",
-    description: "Engaging social media posts and story templates"
-  },
-  {
-    id: 4,
-    title: "Video Thumbnails",
-    category: "Thumbnails",
-    image: "/graphic-design/thumbnils  main.jpeg",
-    description: "Eye-catching YouTube and video thumbnails"
-  },
-  {
-    id: 5,
-    title: "Video Editing",
-    category: "Video",
-    image: "/graphic-design/vedio editing main.jpeg",
-    description: "Professional video editing and motion graphics"
-  },
-  {
-    id: 6,
-    title: "Branding Project 1",
-    category: "Branding",
-    image: "/graphic-design/branding 1.jpeg",
-    description: "Modern branding solution for tech startup"
-  },
-  {
-    id: 7,
-    title: "Branding Project 2",
-    category: "Branding",
-    image: "/graphic-design/branding 2.jpeg",
-    description: "Elegant branding for luxury brand"
-  },
-  {
-    id: 8,
-    title: "Branding Project 3",
-    category: "Branding",
-    image: "/graphic-design/branding 3.jpeg",
-    description: "Creative branding for creative agency"
-  }
-];
 
 const services = [
   {
@@ -114,18 +56,31 @@ function BrandingGrid() {
       {/* Branding Main - Full Screen */}
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 60 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-        transition={{ duration: 0.8 }}
+        initial={{ opacity: 0, y: 60, rotateX: -10 }}
+        animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : { opacity: 0, y: 60, rotateX: -10 }}
+        whileHover={{ 
+          rotateX: 2,
+          rotateY: 1,
+          scale: 1.02,
+          z: 30
+        }}
+        transition={{ 
+          duration: 0.8,
+          type: "spring",
+          stiffness: 100
+        }}
         className="w-full mb-12"
+        style={{ transformStyle: "preserve-3d" }}
       >
-        <div className="relative w-full h-[90vh] rounded-3xl overflow-hidden group">
+        <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
           <Image
             src="/graphic-design/branding main.jpeg"
             alt="Branding Main"
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-700"
           />
+          {/* 3D depth overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
       </motion.div>
 
@@ -134,15 +89,27 @@ function BrandingGrid() {
         initial={{ opacity: 0, y: 60 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="grid grid-cols-2 gap-6 mb-12"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
       >
         {brandingImages.map((image, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="relative w-full h-[30vh] rounded-2xl overflow-hidden group"
+            initial={{ opacity: 0, scale: 0.9, rotateY: index % 2 === 0 ? -15 : 15 }}
+            animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : { opacity: 0, scale: 0.9, rotateY: index % 2 === 0 ? -15 : 15 }}
+            whileHover={{ 
+              scale: 1.05, 
+              rotateY: index % 2 === 0 ? 5 : -5,
+              rotateX: 2,
+              z: 50
+            }}
+            transition={{ 
+              duration: 0.6, 
+              delay: index * 0.1,
+              type: "spring",
+              stiffness: 100
+            }}
+            className="relative w-full h-[25vh] md:h-[30vh] rounded-2xl overflow-hidden group shadow-xl"
+            style={{ transformStyle: "preserve-3d" }}
           >
             <Image
               src={image.src}
@@ -156,6 +123,8 @@ function BrandingGrid() {
                 <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-sm"></div>
               </div>
             )}
+            {/* 3D depth effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </motion.div>
         ))}
       </motion.div>
@@ -248,6 +217,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 }
 
 export default function GraphicDesignPage() {
+  const router = useRouter();
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
 
@@ -255,6 +225,54 @@ export default function GraphicDesignPage() {
     <div className="min-h-screen w-full bg-gradient-to-br from-[#0d262c] via-[#051317]/80 to-[#0d262c] relative overflow-x-hidden">
       {/* Dark overlay to ensure consistent background */}
       <div className="absolute inset-0 bg-[#0d262c]/20 pointer-events-none"></div>
+      
+      {/* Floating 3D Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            rotateX: [0, 10, 0],
+            rotateY: [0, 15, 0]
+          }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-[#3d8a9a]/20 to-[#0d262c]/20 rounded-2xl blur-xl"
+          style={{ transformStyle: "preserve-3d" }}
+        />
+        <motion.div
+          animate={{ 
+            y: [0, 30, 0],
+            rotateX: [0, -15, 0],
+            rotateZ: [0, 10, 0]
+          }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute top-40 right-20 w-32 h-32 bg-gradient-to-br from-[#4fa6b8]/15 to-[#051317]/15 rounded-3xl blur-2xl"
+          style={{ transformStyle: "preserve-3d" }}
+        />
+        <motion.div
+          animate={{ 
+            y: [0, -25, 0],
+            rotateY: [0, -20, 0],
+            rotateX: [0, 5, 0]
+          }}
+          transition={{ 
+            duration: 7, 
+            repeat: Infinity, 
+            ease: "easeInOut",
+            delay: 4
+          }}
+          className="absolute bottom-40 left-1/4 w-24 h-24 bg-gradient-to-br from-[#3d8a9a]/25 to-transparent rounded-full blur-xl"
+          style={{ transformStyle: "preserve-3d" }}
+        />
+      </div>
       {/* Hero Section */}
       <section ref={heroRef} className="relative py-20 md:py-32 overflow-hidden">
         {/* Background effects */}
@@ -281,7 +299,18 @@ export default function GraphicDesignPage() {
           >
             <button
               onClick={() => {
+                // Primary method: Use window.location for navigation with hash
                 window.location.href = "/#services";
+                
+                // Fallback: If we're already on the home page, try direct scrolling
+                if (window.location.pathname === "/") {
+                  setTimeout(() => {
+                    const servicesSection = document.getElementById('services');
+                    if (servicesSection) {
+                      servicesSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
+                }
               }}
               className="inline-flex items-center gap-2 text-white/80 hover:text-[#3d8a9a] transition-colors duration-300 bg-[#0d262c]/30 backdrop-blur-sm px-4 py-2 rounded-full border border-[#0d262c]/50"
             >
@@ -342,19 +371,32 @@ export default function GraphicDesignPage() {
 
           {/* Table of Content - Full Screen */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 60, rotateX: -10 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            whileHover={{ 
+              rotateX: 2,
+              rotateY: 1,
+              scale: 1.02,
+              z: 30
+            }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
+            }}
             viewport={{ once: true }}
             className="w-full mb-12"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[90vh] rounded-3xl overflow-hidden group">
+            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/table of contant.jpeg"
                 alt="Table of Content"
                 fill
                 className="object-contain group-hover:scale-105 transition-transform duration-700"
               />
+              {/* 3D depth overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
 
@@ -363,13 +405,24 @@ export default function GraphicDesignPage() {
 
           {/* Logo Main - Full Screen */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 60, rotateX: -10 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            whileHover={{ 
+              rotateX: 2,
+              rotateY: 1,
+              scale: 1.02,
+              z: 30
+            }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
+            }}
             viewport={{ once: true }}
             className="w-full mb-12"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[90vh] rounded-3xl overflow-hidden group">
+            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/logo main.jpeg"
                 alt="Logo Main"
@@ -380,6 +433,8 @@ export default function GraphicDesignPage() {
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent blur-sm"></div>
               </div>
+              {/* 3D depth overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
 
@@ -391,7 +446,7 @@ export default function GraphicDesignPage() {
             viewport={{ once: true }}
             className="w-full mb-12"
           >
-            <div className="relative w-full h-[50vh] rounded-3xl overflow-hidden group">
+            <div className="relative w-full h-[40vh] md:h-[50vh] rounded-3xl overflow-hidden group">
               <Image
                 src="/graphic-design/logo 1.jpeg"
                 alt="Logo 1"
@@ -403,19 +458,32 @@ export default function GraphicDesignPage() {
 
           {/* Thumbnail Main - Full Screen */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 60, rotateX: -10 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            whileHover={{ 
+              rotateX: 2,
+              rotateY: 1,
+              scale: 1.02,
+              z: 30
+            }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
+            }}
             viewport={{ once: true }}
             className="w-full mb-12"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[90vh] rounded-3xl overflow-hidden group">
+            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/thumbnils  main.jpeg"
                 alt="Thumbnail Main"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              {/* 3D depth overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
 
@@ -425,7 +493,7 @@ export default function GraphicDesignPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-3 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           >
             {[
               { src: "/graphic-design/thumbnil 1.jpeg", title: "Thumbnail 1" },
@@ -434,11 +502,23 @@ export default function GraphicDesignPage() {
             ].map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                initial={{ opacity: 0, scale: 0.9, rotateY: (index - 1) * 15 }}
+                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: (index - 1) * 5,
+                  rotateX: 2,
+                  z: 50
+                }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
                 viewport={{ once: true }}
-                className="relative w-full h-[30vh] rounded-2xl overflow-hidden group"
+                className="relative w-full h-[25vh] md:h-[30vh] rounded-2xl overflow-hidden group shadow-xl"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
                   src={image.src}
@@ -446,25 +526,40 @@ export default function GraphicDesignPage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
+                {/* 3D depth effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             ))}
           </motion.div>
 
           {/* Social Media Main - Full Screen */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 60, rotateX: -10 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            whileHover={{ 
+              rotateX: 2,
+              rotateY: 1,
+              scale: 1.02,
+              z: 30
+            }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
+            }}
             viewport={{ once: true }}
             className="w-full mb-12"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[90vh] rounded-3xl overflow-hidden group">
+            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/socail meadia main.jpeg"
                 alt="Social Media Main"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              {/* 3D depth overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
 
@@ -474,7 +569,7 @@ export default function GraphicDesignPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
           >
             {[
               { src: "/graphic-design/social media 1.jpeg", title: "Social Media 1" },
@@ -482,11 +577,23 @@ export default function GraphicDesignPage() {
             ].map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                initial={{ opacity: 0, scale: 0.9, rotateY: index % 2 === 0 ? -15 : 15 }}
+                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: index % 2 === 0 ? 5 : -5,
+                  rotateX: 2,
+                  z: 50
+                }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
                 viewport={{ once: true }}
-                className="relative w-full h-[40vh] rounded-2xl overflow-hidden group"
+                className="relative w-full h-[30vh] md:h-[40vh] rounded-2xl overflow-hidden group shadow-xl"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
                   src={image.src}
@@ -494,25 +601,40 @@ export default function GraphicDesignPage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
+                {/* 3D depth effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             ))}
           </motion.div>
 
           {/* Video Editing Main - Full Screen */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 60, rotateX: -10 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            whileHover={{ 
+              rotateX: 2,
+              rotateY: 1,
+              scale: 1.02,
+              z: 30
+            }}
+            transition={{ 
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
+            }}
             viewport={{ once: true }}
             className="w-full mb-12"
+            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[90vh] rounded-3xl overflow-hidden group">
+            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/vedio editing main.jpeg"
                 alt="Video Editing Main"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              {/* 3D depth overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
 
@@ -522,19 +644,31 @@ export default function GraphicDesignPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
           >
             {[
-              { src: "/graphic-design/vedio editing.jpeg", title: "Video Editing 1" },
+              { src: "/graphic-design/vedio editing 1.jpeg", title: "Video Editing 1" },
               { src: "/graphic-design/vedio editing 2.jpeg", title: "Video Editing 2" }
             ].map((image, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
+                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: 5,
+                  rotateX: 2,
+                  z: 50
+                }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100
+                }}
                 viewport={{ once: true }}
-                className="relative w-full h-[40vh] rounded-2xl overflow-hidden group"
+                className="relative w-full h-[30vh] md:h-[40vh] rounded-2xl overflow-hidden group shadow-2xl"
+                style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
                   src={image.src}
@@ -542,6 +676,8 @@ export default function GraphicDesignPage() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
+                {/* 3D depth effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </motion.div>
             ))}
           </motion.div>
@@ -601,9 +737,23 @@ export default function GraphicDesignPage() {
               Let's work together to create stunning designs that make your brand stand out from the competition
             </p>
             <motion.button
+              onClick={() => {
+                // Primary method: Use window.location for navigation with hash
+                window.location.href = "/#contact";
+                
+                // Fallback: If we're already on the home page, try direct scrolling
+                if (window.location.pathname === "/") {
+                  setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 100);
+                }
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-[#0d262c] to-[#3d8a9a] text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-[#0d262c]/30 transition-all duration-500"
+              className="px-8 py-4 bg-gradient-to-r from-[#0d262c] to-[#3d8a9a] text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-[#0d262c]/30 transition-all duration-500 cursor-pointer"
             >
               Start Your Project
             </motion.button>

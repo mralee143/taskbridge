@@ -18,6 +18,46 @@ export default function Home() {
     setShowWelcome(false);
   };
 
+  // Handle hash navigation after components are loaded
+  useEffect(() => {
+    if (!showWelcome) {
+      const scrollToSection = () => {
+        const hash = window.location.hash.substring(1); // Remove the #
+        if (hash) {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      };
+
+      // Try multiple times with increasing delays to ensure components are rendered
+      setTimeout(scrollToSection, 100);
+      setTimeout(scrollToSection, 500);
+      setTimeout(scrollToSection, 1000);
+    }
+  }, [showWelcome]);
+
+  // Also handle hash changes while on the page
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (!showWelcome) {
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          setTimeout(() => {
+            const element = document.getElementById(hash);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [showWelcome]);
+
   return (
     <div className="min-h-screen bg-slate-900">
       <AnimatePresence mode="wait">

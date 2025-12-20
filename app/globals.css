@@ -24,8 +24,49 @@
   }
 }
 
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar height */
+}
+
+/* Mobile-specific smooth scrolling improvements */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 70px; /* Slightly less padding for mobile */
+  }
+  
+  /* Ensure smooth scrolling works on iOS Safari */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Enhanced smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f4d57;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b6777;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d8a9a;
 }

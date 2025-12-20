@@ -10,6 +10,7 @@ const services = [
   {
     icon: Palette,
     title: "Graphics Designing",
+    id: "graphics-designing",
     description: "Create stunning visual identities, logos, and brand materials that captivate your audience and stand out in the market.",
     features: ["Logo Design", "Brand Identity", "Marketing Materials", "Social Media Graphics"],
     color: "from-[#2b6777] to-[#1f4d57]",
@@ -18,6 +19,7 @@ const services = [
   {
     icon: Search,
     title: "SEO Services",
+    id: "seo",
     description: "Boost your online visibility with strategic SEO optimization that drives organic traffic and improves search rankings.",
     features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Analytics & Reporting"],
     color: "from-[#1f4d57] to-[#163a42]",
@@ -26,6 +28,7 @@ const services = [
   {
     icon: TrendingUp,
     title: "Digital Marketing",
+    id: "digital-marketing",
     description: "Comprehensive marketing strategies that connect with your target audience and deliver measurable ROI across all channels.",
     features: ["Social Media Marketing", "Email Campaigns", "Content Strategy", "PPC Advertising"],
     color: "from-[#3d8a9a] to-[#2b6777]",
@@ -34,6 +37,7 @@ const services = [
   {
     icon: Code,
     title: "Web Development",
+    id: "web-development",
     description: "Build powerful, responsive websites and web applications with cutting-edge technologies and best practices.",
     features: ["Custom Websites", "E-commerce Solutions", "Web Applications", "Maintenance & Support"],
     color: "from-[#163a42] to-[#0d262c]",
@@ -42,6 +46,7 @@ const services = [
   {
     icon: Bot,
     title: "AI Chatbot",
+    id: "ai-chatbot",
     description: "Implement intelligent chatbot solutions that provide 24/7 customer support and enhance user engagement.",
     features: ["Custom AI Training", "Multi-Platform Integration", "Natural Language Processing", "Analytics Dashboard"],
     color: "from-[#0d262c] to-[#051317]",
@@ -74,19 +79,19 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         scale: 0.9
       }}
       transition={{ 
-        duration: 0.8, 
-        delay: index * 0.1,
+        duration: 0.6, 
+        delay: index * 0.08,
         ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smoothness
         type: "spring",
-        stiffness: 100,
-        damping: 15
+        stiffness: 120,
+        damping: 20
       }}
       whileHover={{ 
-        y: -20, 
-        scale: 1.05,
-        rotateX: 8,
+        y: -15, 
+        scale: 1.03,
+        rotateX: 5,
         transition: { 
-          duration: 0.4,
+          duration: 0.3,
           ease: "easeOut"
         }
       }}
@@ -413,14 +418,18 @@ export function Services() {
           {/* First 3 services in a row */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {services.slice(0, 3).map((service, index) => (
-              <ServiceCard key={service.title} service={service} index={index} />
+              <div key={service.title} id={service.id}>
+                <ServiceCard service={service} index={index} />
+              </div>
             ))}
           </div>
           
           {/* Last 2 services centered in a row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-4xl mx-auto">
             {services.slice(3, 5).map((service, index) => (
-              <ServiceCard key={service.title} service={service} index={index + 3} />
+              <div key={service.title} id={service.id}>
+                <ServiceCard service={service} index={index + 3} />
+              </div>
             ))}
           </div>
         </div>

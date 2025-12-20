@@ -19,8 +19,9 @@ export function WhatsAppChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
 
-  // Your WhatsApp number (replace with your actual number)
-  const whatsappNumber = "+1234567890"; // Replace with your WhatsApp number
+  // Your WhatsApp number - UAE format: 971 + 9-digit mobile number
+  // +971 58 858 1536 = 971588581536
+  const whatsappNumber = "971588581536";
   
   const predefinedMessages = [
     "Hi! I'm interested in your services",
@@ -34,7 +35,10 @@ export function WhatsAppChat() {
     const messageToSend = msg || message;
     if (messageToSend.trim()) {
       const encodedMessage = encodeURIComponent(messageToSend);
-      const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodedMessage}`;
+      // Remove all non-numeric characters and ensure proper format
+      const cleanNumber = whatsappNumber.replace(/[^0-9]/g, '');
+      const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+      console.log('WhatsApp URL:', whatsappUrl); // For debugging
       window.open(whatsappUrl, '_blank');
       setMessage("");
       setIsOpen(false);
@@ -42,7 +46,10 @@ export function WhatsAppChat() {
   };
 
   const handleCall = () => {
-    window.open(`tel:${whatsappNumber}`, '_self');
+    // For tel: protocol, we need the + sign
+    const phoneUrl = `tel:+${whatsappNumber}`;
+    console.log('Phone URL:', phoneUrl); // For debugging
+    window.open(phoneUrl, '_self');
   };
 
   return (

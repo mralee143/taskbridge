@@ -4,18 +4,45 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Menu, X, Search, Instagram, Facebook, Linkedin, ChevronDown } from "lucide-react";
 
+// Smooth scroll utility function
+const smoothScrollTo = (elementId: string) => {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    });
+  }
+};
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+    
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isOpen && !target.closest('.mobile-menu') && !target.closest('.mobile-menu-button')) {
+        setIsOpen(false);
+        setMobileServicesOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    document.addEventListener("click", handleClickOutside);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -25,12 +52,32 @@ export function Navbar() {
   ];
 
   const serviceItems = [
-    { name: "Graphics Designing", href: "#graphics-designing" },
-    { name: "SEO", href: "#seo" },
-    { name: "Digital Marketing", href: "#digital-marketing" },
-    { name: "Web Development", href: "#web-development" },
-    { name: "AI Chat Bot", href: "#ai-chatbot" },
+    { name: "Graphics Designing", href: "graphics-designing" },
+    { name: "SEO", href: "seo" },
+    { name: "Digital Marketing", href: "digital-marketing" },
+    { name: "Web Development", href: "web-development" },
+    { name: "AI Chat Bot", href: "ai-chatbot" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    smoothScrollTo(targetId);
+    setIsOpen(false);
+  };
+
+  const handleMobileServicesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileServicesOpen(!mobileServicesOpen);
+  };
+
+  const handleServiceClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href);
+    setServicesOpen(false);
+    setMobileServicesOpen(false);
+    setIsOpen(false);
+  };
 
   return (
     <motion.nav
@@ -74,7 +121,8 @@ export function Navbar() {
                         {serviceItems.map((service) => (
                           <a
                             key={service.name}
-                            href={service.href}
+                            href={`#${service.href}`}
+                            onClick={(e) => handleServiceClick(e, service.href)}
                             className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-200"
                           >
                             {service.name}
@@ -86,6 +134,7 @@ export function Navbar() {
                 ) : (
                   <a
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium"
                   >
                     {link.name}
@@ -121,7 +170,7 @@ export function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="mobile-menu-button text-gray-300 hover:text-white transition-colors"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -135,18 +184,55 @@ export function Navbar() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-[#2b6777]/95 backdrop-blur-md border-t border-[#2b6777]/50"
+          className="mobile-menu md:hidden bg-[#2b6777]/95 backdrop-blur-md border-t border-[#2b6777]/50"
         >
           <div className="px-4 pt-2 pb-3 space-y-1">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-white block px-3 py-2 transition-colors duration-200 text-sm font-medium"
-              >
-                {link.name}
-              </a>
+              <div key={link.name}>
+                {link.hasDropdown ? (
+                  <div>
+                    <a
+                      href={link.href}
+                      onClick={(e) => handleMobileServicesClick(e)}
+                      className="text-gray-300 hover:text-white block px-3 py-2 transition-colors duration-200 text-sm font-medium flex items-center justify-between"
+                    >
+                      {link.name}
+                      <ChevronDown 
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          mobileServicesOpen ? 'rotate-180' : ''
+                        }`} 
+                      />
+                    </a>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="ml-4 mt-2 space-y-1"
+                      >
+                        {serviceItems.map((service) => (
+                          <a
+                            key={service.name}
+                            href={`#${service.href}`}
+                            onClick={(e) => handleServiceClick(e, service.href)}
+                            className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-[#2b6777]/30 rounded transition-colors duration-200"
+                          >
+                            {service.name}
+                          </a>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="text-gray-300 hover:text-white block px-3 py-2 transition-colors duration-200 text-sm font-medium"
+                  >
+                    {link.name}
+                  </a>
+                )}
+              </div>
             ))}
             <div className="pt-4 border-t border-[#2b6777]/50 mt-4">
               <div className="flex items-center space-x-4 px-3">
