@@ -40,6 +40,18 @@ html {
   body {
     -webkit-overflow-scrolling: touch;
   }
+  
+  /* Improve image rendering on mobile */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Better touch targets for mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 body {

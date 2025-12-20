@@ -2,10 +2,45 @@
 
 import { motion } from "motion/react";
 import { useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Palette, Star, Download, Eye, Video } from "lucide-react";
 import Image from "next/image";
+
+// Image loading component with error handling
+const OptimizedImage = ({ 
+  src, 
+  alt, 
+  className = "", 
+  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw",
+  priority = false 
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  sizes?: string;
+  priority?: boolean;
+}) => {
+  return (
+    <div className="relative w-full h-full">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        className={className}
+        style={{ objectFit: 'cover' }}
+        onError={(e) => {
+          console.warn(`Failed to load image: ${src}`);
+        }}
+      />
+      {/* Loading placeholder */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0d262c]/20 to-[#051317]/20 animate-pulse" 
+           style={{ zIndex: -1 }} />
+    </div>
+  );
+};
 
 const services = [
   {
@@ -40,6 +75,252 @@ const services = [
   }
 ];
 
+// Professional Auto-sliding Portfolio Showcase
+function ProfessionalAutoSlider() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const portfolioShowcase = [
+    {
+      src: "/graphic-design/branding main.jpeg",
+      category: "Brand Identity",
+      title: "Complete Brand Solutions",
+      description: "Strategic brand development and visual identity systems"
+    },
+    {
+      src: "/graphic-design/logo main.jpeg", 
+      category: "Logo Design",
+      title: "Distinctive Logo Creation",
+      description: "Memorable logos that capture brand essence"
+    },
+    {
+      src: "/graphic-design/thumbnils  main.jpeg",
+      category: "Digital Design",
+      title: "Engaging Thumbnails",
+      description: "Click-worthy designs for digital platforms"
+    },
+    {
+      src: "/graphic-design/socail meadia main.jpeg",
+      category: "Social Media",
+      title: "Social Media Graphics",
+      description: "Cohesive visual content for social platforms"
+    },
+    {
+      src: "/graphic-design/vedio editing main.jpeg",
+      category: "Video Production",
+      title: "Professional Video Editing",
+      description: "High-quality video content and motion graphics"
+    }
+  ];
+
+  useEffect(() => {
+    if (isInView && !isHovered) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex: number) => (prevIndex + 1) % portfolioShowcase.length);
+      }, 5000); // Change every 5 seconds for professional pacing
+
+      return () => clearInterval(interval);
+    }
+  }, [isInView, isHovered, portfolioShowcase.length]);
+
+  return (
+    <section ref={ref} className="relative py-16 md:py-24 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d262c]/5 to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Professional Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <motion.div
+            className="inline-flex items-center gap-3 px-6 py-3 mb-6 bg-gradient-to-r from-[#0d262c]/80 to-[#051317]/80 backdrop-blur-xl rounded-full border border-[#3d8a9a]/20"
+            whileHover={{ scale: 1.02, borderColor: "rgba(61, 138, 154, 0.4)" }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="w-2 h-2 bg-[#3d8a9a] rounded-full animate-pulse"></div>
+            <span className="text-white font-medium text-sm tracking-wide">FEATURED WORK</span>
+          </motion.div>
+          
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-[var(--font-space-grotesk)]">
+            Portfolio{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3d8a9a] via-[#4fa6b8] to-white">
+              Showcase
+            </span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+            Discover our latest creative solutions and design excellence
+          </p>
+        </motion.div>
+
+        {/* Main Professional Slider */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="relative"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Main Image Container */}
+          <div className="relative w-full aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl shadow-[#0d262c]/50">
+            {portfolioShowcase.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: currentIndex === index ? 1 : 0,
+                  scale: currentIndex === index ? 1 : 1.05,
+                }}
+                transition={{ 
+                  duration: 1.2, 
+                  ease: [0.25, 0.46, 0.45, 0.94] // Professional easing
+                }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                  className="object-cover"
+                  priority={index === 0}
+                />
+                
+                {/* Professional Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0d262c]/90 via-[#0d262c]/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d262c]/80 via-transparent to-transparent"></div>
+                
+                {/* Content Overlay */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{
+                    opacity: currentIndex === index ? 1 : 0,
+                    x: currentIndex === index ? 0 : -50,
+                  }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="absolute bottom-8 left-8 md:bottom-12 md:left-12 max-w-lg"
+                >
+                  <div className="mb-3">
+                    <span className="inline-block px-3 py-1 bg-[#3d8a9a]/20 backdrop-blur-sm border border-[#3d8a9a]/30 rounded-full text-[#3d8a9a] text-xs font-semibold tracking-wide uppercase">
+                      {item.category}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl md:text-4xl font-bold text-white mb-3 leading-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              </motion.div>
+            ))}
+
+            {/* Professional Navigation */}
+            <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 flex items-center gap-4">
+              {/* Progress Indicators */}
+              <div className="flex gap-2">
+                {portfolioShowcase.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className="group relative"
+                    aria-label={`View project ${index + 1}`}
+                  >
+                    <div className={`w-12 h-1 rounded-full transition-all duration-500 ${
+                      currentIndex === index 
+                        ? "bg-white" 
+                        : "bg-white/20 hover:bg-white/40"
+                    }`}>
+                      {currentIndex === index && (
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-[#3d8a9a] to-[#4fa6b8] rounded-full"
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{ duration: 5, ease: "linear" }}
+                          key={currentIndex}
+                        />
+                      )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Counter */}
+              <div className="text-white/60 text-sm font-mono">
+                {String(currentIndex + 1).padStart(2, '0')} / {String(portfolioShowcase.length).padStart(2, '0')}
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => setCurrentIndex((currentIndex - 1 + portfolioShowcase.length) % portfolioShowcase.length)}
+              className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 group"
+              aria-label="Previous project"
+            >
+              <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform" />
+            </button>
+            <button
+              onClick={() => setCurrentIndex((currentIndex + 1) % portfolioShowcase.length)}
+              className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white/20 hover:border-white/40 transition-all duration-300 group"
+              aria-label="Next project"
+            >
+              <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 text-white rotate-180 group-hover:scale-110 transition-transform" />
+            </button>
+          </div>
+
+          {/* Professional Thumbnail Strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-6 md:mt-8 flex justify-center gap-3 md:gap-4"
+          >
+            {portfolioShowcase.map((item, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`relative group transition-all duration-500 ${
+                  currentIndex === index 
+                    ? "scale-110" 
+                    : "scale-100 hover:scale-105"
+                }`}
+              >
+                <div className={`relative w-20 h-12 md:w-28 md:h-16 rounded-xl overflow-hidden transition-all duration-500 ${
+                  currentIndex === index
+                    ? "ring-2 ring-[#3d8a9a] ring-offset-2 ring-offset-[#0d262c]"
+                    : "opacity-40 hover:opacity-70"
+                }`}>
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    sizes="120px"
+                    className="object-cover"
+                  />
+                  {currentIndex !== index && (
+                    <div className="absolute inset-0 bg-[#0d262c]/60"></div>
+                  )}
+                </div>
+                
+                {/* Tooltip */}
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-[#0d262c]/90 backdrop-blur-sm text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  {item.category}
+                </div>
+              </button>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function BrandingGrid() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -69,15 +350,17 @@ function BrandingGrid() {
           type: "spring",
           stiffness: 100
         }}
-        className="w-full mb-12"
+        className="w-full mb-8 sm:mb-12"
         style={{ transformStyle: "preserve-3d" }}
       >
-        <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
+        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-2xl">
           <Image
             src="/graphic-design/branding main.jpeg"
             alt="Branding Main"
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 95vw, (max-width: 1200px) 90vw, 80vw"
             className="object-cover group-hover:scale-105 transition-transform duration-700"
+            priority={true}
           />
           {/* 3D depth overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -89,7 +372,7 @@ function BrandingGrid() {
         initial={{ opacity: 0, y: 60 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-12"
       >
         {brandingImages.map((image, index) => (
           <motion.div
@@ -108,13 +391,14 @@ function BrandingGrid() {
               type: "spring",
               stiffness: 100
             }}
-            className="relative w-full h-[25vh] md:h-[30vh] rounded-2xl overflow-hidden group shadow-xl"
+            className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden group shadow-xl"
             style={{ transformStyle: "preserve-3d" }}
           >
             <Image
               src={image.src}
               alt={image.title}
               fill
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 50vw"
               className="object-cover group-hover:scale-110 transition-transform duration-500"
             />
             {/* Light brightness line in center for branding 4 (index 3) */}
@@ -348,8 +632,11 @@ export default function GraphicDesignPage() {
         </div>
       </section>
 
+      {/* Professional Auto Slider Section */}
+      <ProfessionalAutoSlider />
+
       {/* Portfolio Section */}
-      <section className="relative py-20">
+      <section className="relative py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -385,15 +672,16 @@ export default function GraphicDesignPage() {
               stiffness: 100
             }}
             viewport={{ once: true }}
-            className="w-full mb-12"
+            className="w-full mb-8 sm:mb-12"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/table of contant.jpeg"
                 alt="Table of Content"
                 fill
-                className="object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 95vw, (max-width: 1200px) 90vw, 80vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* 3D depth overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -419,14 +707,15 @@ export default function GraphicDesignPage() {
               stiffness: 100
             }}
             viewport={{ once: true }}
-            className="w-full mb-12"
+            className="w-full mb-8 sm:mb-12"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/logo main.jpeg"
                 alt="Logo Main"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 95vw, (max-width: 1200px) 90vw, 80vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* Light brightness line in center */}
@@ -444,13 +733,14 @@ export default function GraphicDesignPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="w-full mb-12"
+            className="w-full mb-8 sm:mb-12"
           >
-            <div className="relative w-full h-[40vh] md:h-[50vh] rounded-3xl overflow-hidden group">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/10] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-xl">
               <Image
                 src="/graphic-design/logo 1.jpeg"
                 alt="Logo 1"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 95vw, (max-width: 1200px) 90vw, 80vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -472,14 +762,15 @@ export default function GraphicDesignPage() {
               stiffness: 100
             }}
             viewport={{ once: true }}
-            className="w-full mb-12"
+            className="w-full mb-8 sm:mb-12"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/thumbnils  main.jpeg"
                 alt="Thumbnail Main"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 95vw, (max-width: 1200px) 90vw, 80vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* 3D depth overlay */}
@@ -493,7 +784,7 @@ export default function GraphicDesignPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-12"
           >
             {[
               { src: "/graphic-design/thumbnil 1.jpeg", title: "Thumbnail 1" },
@@ -517,13 +808,14 @@ export default function GraphicDesignPage() {
                   stiffness: 100
                 }}
                 viewport={{ once: true }}
-                className="relative w-full h-[25vh] md:h-[30vh] rounded-2xl overflow-hidden group shadow-xl"
+                className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden group shadow-xl"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
                   src={image.src}
                   alt={image.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 33vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 {/* 3D depth effect */}
@@ -548,14 +840,15 @@ export default function GraphicDesignPage() {
               stiffness: 100
             }}
             viewport={{ once: true }}
-            className="w-full mb-12"
+            className="w-full mb-8 sm:mb-12"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/socail meadia main.jpeg"
                 alt="Social Media Main"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 95vw, (max-width: 1200px) 90vw, 80vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* 3D depth overlay */}
@@ -569,7 +862,7 @@ export default function GraphicDesignPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-12"
           >
             {[
               { src: "/graphic-design/social media 1.jpeg", title: "Social Media 1" },
@@ -592,13 +885,14 @@ export default function GraphicDesignPage() {
                   stiffness: 100
                 }}
                 viewport={{ once: true }}
-                className="relative w-full h-[30vh] md:h-[40vh] rounded-2xl overflow-hidden group shadow-xl"
+                className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden group shadow-xl"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
                   src={image.src}
                   alt={image.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 50vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 {/* 3D depth effect */}
@@ -623,14 +917,15 @@ export default function GraphicDesignPage() {
               stiffness: 100
             }}
             viewport={{ once: true }}
-            className="w-full mb-12"
+            className="w-full mb-8 sm:mb-12"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="relative w-full h-[60vh] md:h-[90vh] rounded-3xl overflow-hidden group shadow-2xl">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden group shadow-2xl">
               <Image
                 src="/graphic-design/vedio editing main.jpeg"
                 alt="Video Editing Main"
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 95vw, (max-width: 1200px) 90vw, 80vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               {/* 3D depth overlay */}
@@ -644,7 +939,7 @@ export default function GraphicDesignPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-12"
           >
             {[
               { src: "/graphic-design/vedio editing 1.jpeg", title: "Video Editing 1" },
@@ -667,13 +962,14 @@ export default function GraphicDesignPage() {
                   stiffness: 100
                 }}
                 viewport={{ once: true }}
-                className="relative w-full h-[30vh] md:h-[40vh] rounded-2xl overflow-hidden group shadow-2xl"
+                className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden group shadow-2xl"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
                   src={image.src}
                   alt={image.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 50vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 {/* 3D depth effect */}
@@ -685,7 +981,7 @@ export default function GraphicDesignPage() {
       </section>
 
       {/* Services Section */}
-      <section className="relative py-20">
+      <section className="relative py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -705,7 +1001,7 @@ export default function GraphicDesignPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             {services.slice(0, 4).map((service, index) => (
               <ServiceCard key={service.title} service={service} index={index} />
             ))}
@@ -721,7 +1017,7 @@ export default function GraphicDesignPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20">
+      <section className="relative py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
