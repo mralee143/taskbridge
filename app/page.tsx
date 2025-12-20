@@ -9,6 +9,7 @@ import { Services } from "./component/services";
 import { About } from "./component/about";
 import { Contact } from "./component/contact";
 import { Footer } from "./component/footer";
+import { WhatsAppChat } from "./component/whatsapp-chat";
 
 export default function Home() {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -33,6 +34,9 @@ export default function Home() {
           </div>
         )}
       </AnimatePresence>
+      
+      {/* WhatsApp Chat - Always visible */}
+      <WhatsAppChat />
     </div>
   );
 }

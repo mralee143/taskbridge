@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { useInView } from "motion/react";
 import { useRef } from "react";
 import { Palette, Search, TrendingUp, Code, Bot } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   {
@@ -217,60 +218,119 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         </div>
 
         {/* CTA Button with 3D effects */}
-        <motion.button
-          whileHover={{ 
-            scale: 1.08,
-            rotateX: 5,
-            z: 20,
-            boxShadow: "0 15px 40px rgba(43, 103, 119, 0.4)"
-          }}
-          whileTap={{ 
-            scale: 0.95,
-            rotateX: -2
-          }}
-          className="w-full py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-[#2b6777]/50 text-[#3d8a9a] hover:text-white hover:border-[#3d8a9a] transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm text-sm md:text-base"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          {/* Animated background layers */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/0 via-[#2b6777]/20 to-[#3d8a9a]/0"
-            animate={{
-              x: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatDelay: 2,
-            }}
-          />
-          
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/10 to-[#3d8a9a]/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"
-            animate={{
-              background: [
-                "linear-gradient(45deg, rgba(43, 103, 119, 0.1), rgba(61, 138, 154, 0.1))",
-                "linear-gradient(225deg, rgba(61, 138, 154, 0.1), rgba(43, 103, 119, 0.1))",
-              ]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-            }}
-          />
-          
-          <motion.span 
-            className="relative z-10 flex items-center justify-center gap-2"
-            whileHover={{ scale: 1.05 }}
-          >
-            Learn More
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+        {service.title === "Graphics Designing" ? (
+          <Link href="/graphic-design">
+            <motion.button
+              whileHover={{ 
+                scale: 1.08,
+                rotateX: 5,
+                z: 20,
+                boxShadow: "0 15px 40px rgba(43, 103, 119, 0.4)"
+              }}
+              whileTap={{ 
+                scale: 0.95,
+                rotateX: -2
+              }}
+              className="w-full py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-[#2b6777]/50 text-[#3d8a9a] hover:text-white hover:border-[#3d8a9a] transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm text-sm md:text-base"
+              style={{ transformStyle: "preserve-3d" }}
             >
-              →
+              {/* Animated background layers */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/0 via-[#2b6777]/20 to-[#3d8a9a]/0"
+                animate={{
+                  x: ["-100%", "100%"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatDelay: 2,
+                }}
+              />
+              
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/10 to-[#3d8a9a]/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"
+                animate={{
+                  background: [
+                    "linear-gradient(45deg, rgba(43, 103, 119, 0.1), rgba(61, 138, 154, 0.1))",
+                    "linear-gradient(225deg, rgba(61, 138, 154, 0.1), rgba(43, 103, 119, 0.1))",
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                }}
+              />
+              
+              <motion.span 
+                className="relative z-10 flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.05 }}
+              >
+                Learn More
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </motion.span>
+            </motion.button>
+          </Link>
+        ) : (
+          <motion.button
+            whileHover={{ 
+              scale: 1.08,
+              rotateX: 5,
+              z: 20,
+              boxShadow: "0 15px 40px rgba(43, 103, 119, 0.4)"
+            }}
+            whileTap={{ 
+              scale: 0.95,
+              rotateX: -2
+            }}
+            className="w-full py-3 md:py-4 rounded-xl md:rounded-2xl border-2 border-[#2b6777]/50 text-[#3d8a9a] hover:text-white hover:border-[#3d8a9a] transition-all duration-500 font-semibold relative overflow-hidden group/btn backdrop-blur-sm text-sm md:text-base"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {/* Animated background layers */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/0 via-[#2b6777]/20 to-[#3d8a9a]/0"
+              animate={{
+                x: ["-100%", "100%"],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatDelay: 2,
+              }}
+            />
+            
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-[#2b6777]/10 to-[#3d8a9a]/10 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500"
+              animate={{
+                background: [
+                  "linear-gradient(45deg, rgba(43, 103, 119, 0.1), rgba(61, 138, 154, 0.1))",
+                  "linear-gradient(225deg, rgba(61, 138, 154, 0.1), rgba(43, 103, 119, 0.1))",
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
+            />
+            
+            <motion.span 
+              className="relative z-10 flex items-center justify-center gap-2"
+              whileHover={{ scale: 1.05 }}
+            >
+              Learn More
+              <motion.span
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
             </motion.span>
-          </motion.span>
-        </motion.button>
+          </motion.button>
+        )}
       </div>
     </motion.div>
   );
